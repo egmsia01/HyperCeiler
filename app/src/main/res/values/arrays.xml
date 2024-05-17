@@ -679,14 +679,14 @@
 
     <string-array name="market_device_modify_list">
         <item>@string/array_default</item>
+        <item>Xiaomi 15</item>
         <item>Xiaomi 14 Ultra</item>
         <item>Xiaomi 14 Pro</item>
         <item>Xiaomi CIVI 4 Pro</item>
         <item>Xiaomi MIX Flip</item>
         <item>Xiaomi MIX Fold 4</item>
         <item>Xiaomi MIX Fold 3</item>
-        <item>Xiaomi MIX Alpha (Avenger)</item>
-        <item>Xiaomi MIX Alpha (Draco)</item>
+        <item>Xiaomi MIX Alpha</item>
         <item>Xiaomi Pad 6S Pro 12.4</item>
         <item>Redmi K60 Ultra</item>
         <item>Redmi K70 Pro</item>
@@ -697,6 +697,7 @@
 
     <string-array name="market_device_modify_value">
         <item>0</item>
+        <item>105</item>
         <item>104</item>
         <item>102</item>
         <item>155</item>
@@ -704,7 +705,6 @@
         <item>224</item>
         <item>223</item>
         <item>190</item>
-        <item>191</item>
         <item>209</item>
         <item>307</item>
         <item>309</item>
@@ -820,6 +820,12 @@
         <item>@string/android_blur</item>
     </string-array>
 
+    <string-array name="blur_switch_per">
+        <item>@string/no_blur</item>
+        <item>@string/miui_android_blur</item>
+        <item>@string/android_blur</item>
+    </string-array>
+
     <string-array name="blur_switch_value">
         <item>0</item>
         <item>1</item>
@@ -880,38 +886,6 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="card_style_tiles_more">
-        <item>wifi</item>
-        <item>cell</item>
-        <item>bt</item>
-        <item>flashlight</item>
-    </string-array>
-
-    <string-array name="card_style_tiles_most">
-        <item>wifi</item>
-        <item>cell</item>
-        <item>bt</item>
-        <item>flashlight</item>
-        <item>vowifi1</item>
-        <item>vowifi2</item>
-    </string-array>
-
-    <string-array name="card_style_tiles_less"></string-array>
-
-    <string-array name="card_style_tile">
-        <item>@string/array_default</item>
-        <item>@string/system_ui_control_center_more_card_tiles_less</item>
-        <item>@string/system_ui_control_center_more_card_tiles_more</item>
-        <item>@string/system_ui_control_center_more_card_tiles_most</item>
-    </string-array>
-
-    <string-array name="card_style_tiles_value">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
     <string-array name="security_center_suggest">
         <item>@string/array_default</item>
         <item>@string/disable_suggest</item>
@@ -968,12 +942,14 @@
         <item>@string/array_default</item>
         <item>@string/gallery_backup_server_xiaomi</item>
         <item>@string/gallery_backup_server_google</item>
+        <item>@string/gallery_backup_server_onedrive</item>
     </string-array>
 
     <string-array name="gallery_backup_server_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="theme_manager_version_code">
@@ -994,6 +970,51 @@
         <item>130</item>
         <item>140</item>
         <item>150</item>
+    </string-array>
+
+    <string-array name="card_tile_list">
+        <item>wifi</item>
+        <item>cell</item>
+        <item>bt</item>
+        <item>gps</item>
+        <item>nfc</item>
+        <item>hotspot</item>
+        <item>flashlight</item>
+        <item>settings</item>
+        <item>airplane</item>
+        <item>autobrightness</item>
+        <item>vowifi1</item>
+        <item>vowifi2</item>
+    </string-array>
+
+    <integer-array name="card_tile_icon_list">
+        <item>@drawable/ic_cc_qs_wifi</item>
+        <item>@drawable/ic_cc_qs_cellular</item>
+        <item>@drawable/ic_cc_qs_bluetooth</item>
+        <item>@drawable/ic_cc_qs_gps</item>
+        <item>@drawable/ic_cc_qs_nfc</item>
+        <item>@drawable/ic_cc_qs_hotspot</item>
+        <item>@drawable/ic_cc_qs_flashlight</item>
+        <item>@drawable/ic_cc_qs_settings</item>
+        <item>@drawable/ic_cc_qs_airplane</item>
+        <item>@drawable/ic_cc_qs_auto_brightness</item>
+        <item>@drawable/ic_cc_qs_vowifi</item>
+        <item>@drawable/ic_cc_qs_vowifi</item>
+    </integer-array>
+
+    <string-array name="card_tile_title_list">
+        <item>@string/ic_qs_title_wifi</item>
+        <item>@string/ic_qs_title_cellular</item>
+        <item>@string/ic_qs_title_bluetooth</item>
+        <item>@string/ic_qs_title_gps</item>
+        <item>@string/ic_qs_title_nfc</item>
+        <item>@string/ic_qs_title_hotspot</item>
+        <item>@string/ic_qs_title_flashlight</item>
+        <item>@string/ic_qs_title_settings</item>
+        <item>@string/ic_qs_title_airplane</item>
+        <item>@string/ic_qs_title_autobrightness</item>
+        <item>@string/ic_qs_title_vowifi1</item>
+        <item>@string/ic_qs_title_vowifi2</item>
     </string-array>
 
 </resources>

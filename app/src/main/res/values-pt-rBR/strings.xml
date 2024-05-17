@@ -122,16 +122,16 @@
     <string name="abc_action_bar_home_description">Voltar a página inicial</string>
     <string name="abc_action_bar_up_description">Voltar ao nível anterior</string>
     <string name="actionbar_button_up_description">Voltar</string>
-    <string name="appcompat_action_mode_select_all">Selecionar todos</string>
-    <string name="appcompat_cancel_description">Cancelar</string>
-    <string name="appcompat_confirm_description">OK</string>
-    <string name="appcompat_select_all_description">Selecionar todos</string>
-    <string name="appcompat_deselect_all_description">Desmarcar todos</string>
-    <string name="appcompat_delete_description">Excluir</string>
-    <string name="appcompat_search_action_mode_cancel">Cancelar</string>
-    <string name="appcompat_search_input_description">Pesquisar</string>
-    <string name="appcompat_actionbar_immersion_button_more_description">Mais</string>
-    <string name="appcompat_action_mode_inverse">Desmarcar todos</string>
+    <string name="miuix_appcompat_action_mode_select_all">Selecionar todos</string>
+    <string name="miuix_appcompat_cancel_description">Cancelar</string>
+    <string name="miuix_appcompat_confirm_description">OK</string>
+    <string name="miuix_appcompat_select_all_description">Selecionar todos</string>
+    <string name="miuix_appcompat_deselect_all_description">Desmarcar todos</string>
+    <string name="miuix_appcompat_delete_description">Excluir</string>
+    <string name="miuix_appcompat_search_action_mode_cancel">Cancelar</string>
+    <string name="miuix_appcompat_search_input_description">Pesquisar</string>
+    <string name="miuix_appcompat_actionbar_immersion_button_more_description">Mais</string>
+    <string name="miuix_appcompat_action_mode_inverse">Desmarcar todos</string>
     <string name="color_picker_alpha_text_transparent">Opacidade</string>
     <string name="color_picker_tab_grid">Grade</string>
     <string name="color_picker_tab_slider">Slider</string>
@@ -276,6 +276,7 @@
     <string name="control_center_5g_v2">Estilo dois</string>
     <string name="no_blur">Sem blur</string>
     <string name="miui_blur">Blur HyperOS</string>
+    <string name="miui_android_blur">Blur AOSP (autoimplementado pelo app)</string>
     <string name="android_blur">Blur AOSP</string>
     <string name="system_ui_statusbar_network_speed_style_1">Valores e unidades são exibidos em uma única linha</string>
     <string name="system_ui_statusbar_network_speed_style_2">Valores e unidades são exibidos em duas linhas</string>
@@ -339,6 +340,7 @@
     <string name="system_framework_screen_title">Tela e notificações</string>
     <string name="system_framework_core_title">Núcleo por baixo</string>
     <string name="system_framework_hook_entry">Desbloquear limite de carga inteligente</string>
+    <string name="system_framework_hook_entry_desc">A proteção de desconexão de navegação permite que seja usada em cenários que não sejam de navegação</string>
     <string name="system_framework_shortcut_title">Compartilhar atalhos</string>
     <string name="system_framework_screen_all_rotations">Rotação da tela</string>
     <string name="system_framework_allow_untrusted_touch">Permitir toque não confiável</string>
@@ -382,6 +384,7 @@
     <string name="system_framework_quick_screenshot">Captura de tela rápida</string>
     <string name="system_framework_quick_screenshot_desc">Desative o atraso na captura de tela</string>
     <string name="system_framework_disable_link_turbo_toast">Ocultar dica da rede móvel usada para aceleração</string>
+    <string name="system_framework_allow_third_theme">Permitir usar temas de terceiros</string>
     <!--Package Manager Service-->
     <string name="system_framework_corepatch_title">Serviço de Gerenciador de Pacotes</string>
     <string name="system_framework_core_patch_downgr">Permitir downgrade</string>
@@ -728,6 +731,10 @@
     <string name="system_control_center_taplus_label">Interruptores Taplus</string>
     <string name="system_control_center_sunshine_mode">Modo luz solar</string>
     <string name="system_ui_control_auto_close">Fechar após tocar</string>
+    <string name="system_ui_control_center_qs_bg_color">Cor de fundo</string>
+    <string name="system_ui_control_center_qs_color">Cor do ícone</string>
+    <string name="system_ui_control_center_qs_open_color">A personalização de cores de blocos pequenos está ativada</string>
+    <string name="system_ui_control_center_qs_big_open_color">A personalização de cores de blocos grandes está ativada</string>
     <string name="system_ui_control_auto_close_more">Ao tocar no bloco da barra de status, a barra de status será automaticamente retraída.</string>
     <string name="system_control_center_qs_tile_label">Remover nomes</string>
     <string name="system_control_center_qs_rows">Linhas</string>
@@ -796,10 +803,10 @@
     <string name="system_ui_controlcenter_enable_title">Personalizar número de linhas e colunas</string>
     <string name="system_control_center_old_qs_grid_columns">Número de colunas no painel recolhido</string>
     <string name="system_control_center_old_qs_grid_columns_horizontal">Número de colunas no painel recolhido (Paisagem)</string>
-    <string name="system_ui_control_center_more_card_tiles">Mostrar blocos de cartão</string>
-    <string name="system_ui_control_center_more_card_tiles_less">Nenhum</string>
-    <string name="system_ui_control_center_more_card_tiles_more">Mais</string>
-    <string name="system_ui_control_center_more_card_tiles_most">Maioria</string>
+    <string name="system_ui_control_center_card_tiles_customization">Personalizar blocos de cartões</string>
+    <string name="system_ui_control_center_card_tiles_customization_desc">Pressione e segure e arraste os cartões que você adicionou para ajustar a ordem</string>
+    <string name="system_ui_control_center_card_tiles_customization_add">Adicionado</string>
+    <string name="system_ui_control_center_card_tiles_customization_not_add">Não adicionado</string>
     <string name="system_ui_control_center_unlock_blur_supported">Remover restrição do blur de notificação</string>
     <string name="system_ui_control_center_unlock_blur_supported_desc">Não há restrição ao blur de fundo para materiais premium oficiais, apenas para remoção de temas de terceiros.</string>
     <string name="system_ui_other_title">Outros</string>
@@ -860,6 +867,7 @@
     <string name="system_usb_reverse_charge">Carregamento reverso</string>
     <string name="system_usb_tethering">Ancoragem USB</string>
     <string name="system_settings_connection_sharing_title">Conectividade</string>
+    <string name="system_settings_lang_menu_shouw_all_app">Mostrar todos os apps no menu de gerenciamento de idiomas</string>
     <string name="system_settings_new_nfc_page">Nova página NFC</string>
     <string name="system_settings_new_nfc_page_desc">Após a abertura, o app de pagamento padrão para modelos não suportados não pode selecionar Mi Wallet</string>
     <string name="system_settings_lab_title">Funções em destaque</string>
@@ -951,7 +959,7 @@
     <!--Backup-->
     <string name="backup">Backup</string>
     <string name="backup_allow_all_apps">Permitir backup de todos os apps</string>
-    <string name="backup_unlock_broken_screen_backup">Desbloquear backups com tela danificada</string>
+    <string name="backup_unlock_broken_screen_backup">Desbloquear Backups com a tela danificada</string>
     <!--Mi Canvas-->
     <string name="creation">Mi Canvas</string>
     <string name="creation_unlock">Remover restrições sobre o uso de telefones móveis</string>
@@ -973,8 +981,9 @@
     <string name="gallery_enable_magic_matting">Desbloquear Corte</string>
     <string name="gallery_enable_magic_sky">Desbloquear Céu</string>
     <string name="gallery_backup_server">Servidor de backup</string>
-    <string name="gallery_backup_server_xiaomi">Xiaomi Cloud</string>
+    <string name="gallery_backup_server_xiaomi">MiCloud</string>
     <string name="gallery_backup_server_google">Google</string>
+    <string name="gallery_backup_server_onedrive">Google e OneDrive</string>
     <!--MIUI security components-->
     <string name="guard_provider">Componentes de segurança da MIUI</string>
     <string name="guard_provider_hyperos">Componentes de segurança do HyperOS</string>
@@ -1183,7 +1192,7 @@
     <string name="home_other_allow_share_apk">Permitir compartilhar app</string>
     <string name="home_other_user_present_animation">Otimizar animação de desbloqueio</string>
     <string name="home_other_always_blur_launcher_wallpaper">Desfocar plano de fundo na launcher</string>
-    <string name="home_other_perfect_icon">Forçar ativação de ícones perfeitos</string>
+    <string name="home_other_perfect_icon">Forçar animações globais de ícone</string>
     <string name="home_other_icon_mono_chrome">Cor de fundo do ícone</string>
     <string name="home_other_icon_monet_color">Usar cor do monet</string>
     <string name="home_other_use_edit_color">Editar cor</string>
@@ -1205,7 +1214,7 @@
     <string name="system_framework_guided_access_will_unlock">O app será desbloqueado</string>
     <string name="system_framework_guided_access_r">Restaurar</string>
     <string name="system_framework_guided_access_e">Por favor, desbloqueie-o na interface bloqueada do app.</string>
-    <string name="system_framework_guided_access_more">Acesso guiado semelhante ao iOS que fixa o app atual na tela.\nPara usar, pressione e segure a barra de status superior e, se quiser sair, pressione e segure a barra de status superior novamente.\nNa primeira vez que você usá-lo, você precisa para reiniciar o dispositivo.</string>
+    <string name="system_framework_guided_access_more">Acesso guiado semelhante ao iOS que fixa o app atual na tela.\nPara usar, pressione e segure a barra de status superior e, se quiser sair, pressione e segure a barra de status superior novamente.\nNa primeira vez que você usá-lo, você precisa reiniciar o dispositivo.</string>
     <string name="home_other_shortcut_remove_restrictions">Remover restrições de atalhos</string>
     <string name="home_other_shortcut_background_blur_custom">Valor do blur do menu de atalho</string>
     <string name="home_other_high_models">Reconhecimento obrigatório como modelo high-end</string>
@@ -1236,10 +1245,10 @@
     <string name="mishare_disable_mishare_auto_off">Desativar fechamento automático do Compartilhamento Mi</string>
     <string name="mishare_unlock_turbo_mode">Desbloquear Transferência turbo</string>
     <!--Wallpaper-->
-    <string name="miwallpaper">Papéis de Parede Mi</string>
+    <string name="miwallpaper">Plano de fundo Mi</string>
     <string name="miwallpaper_unlock_super_wallpaper">Desbloquear Super plano de fundo</string>
     <!--Package installer-->
-    <string name="package_installer">Instalador de Pacotes</string>
+    <string name="package_installer">Instalador de pacotes</string>
     <string name="miui_package_installer_modify">Purificar a página</string>
     <string name="miui_package_installer_disable_ad">Desativar promoção</string>
     <string name="miui_package_installer_install_risk">Desativar detecção de risco</string>
@@ -1290,6 +1299,9 @@
     <string name="screenshot_save_to_pictures_desc">Captura de tela canônica salva em /Pictures/Screenshots</string>
     <string name="screenshot_device_customize_title">Modelo de captura de tela personalizado</string>
     <string name="screenshot_device_customize_desc">Por favor, insira o código do dispositivo, e o dispositivo colorido deve ser preenchido com um sufixo. Por exemplo:\n- Xiaomi 13, preencha o conteúdo com fuxi\n- Xiaomi 14 versão rosa, preencha o conteúdo com houji_PK</string>
+    <!--System Service Plugin-->
+    <string name="securityadd">Plugin de serviço de sistema</string>
+    <string name="securityadd_disable_gb_ads">Desativar anúncios do Game Center</string>
     <!--Security/Tablet security center-->
     <string name="security_center">Segurança</string>
     <string name="security_center_pad">Segurança</string>
@@ -1439,6 +1451,9 @@
     <string name="market_package_monitor_desc">Proíba que o GetApps pare de monitorar a instalação e desinstalação de apps</string>
     <!--Mi sound-->
     <string name="misound">Fones de ouvido</string>
+    <string name="misound_bluetooth">Mudar status do fone de ouvido automaticamente para o som original</string>
+    <string name="misound_bluetooth_uuid">Identificador UUID de efeito sonoro</string>
+    <string name="misound_bluetooth_uuid_more">Se o efeito sonoro não tiver efeito, você pode tentar modificá-lo você mesmo.</string>
     <string name="misound_increase_sampling_rate">Aumentar taxa de amostragem</string>
     <!--Mi Settings-->
     <string name="mi_settings">Configurações Mi</string>
@@ -1501,7 +1516,7 @@
     <string name="various_open_aosp_default_apps_title">Apps padrão</string>
     <string name="various_mipad_input_title">Entrada</string>
     <string name="various_mipad_input_close_magic_title">Sem ponteiro mágico</string>
-    <string name="various_mipad_input_close_magic_desc">Transforme o ponteiro redondo do sistema Xiaomi Pad em ponteiro AOSP.</string>
+    <string name="various_mipad_input_close_magic_desc">Remove o ponteiro circular do mouse e reverte para o ponteiro do mouse nativo do Android</string>
     <string name="various_mipad_input_restore_esc_title">Restaurar função ESC</string>
     <string name="various_mipad_input_restore_esc_desc">Restaure a função ESC que foi mapeada para a função \"voltar\" pelo sistema Xiaomi Pad.</string>
     <string name="various_mipad_input_disable_bluetooth_title">Remover restrição da caneta Bluetooth</string>
@@ -1623,4 +1638,17 @@
     <string name="safe_mode_recorder_st">Rastreamento de erros</string>
     <string name="tip_default">Dica: Aqui está a dica padrão. Se você puder me ver, significa que há um problema com o HyperCeiler. Por favor, informe o desenvolvedor de maneira oportuna e eficaz.</string>
     <string name="preference_recommend_tip">Precisa de outras configurações?</string>
+    <string name="happy_birthday_hyperceiler">Hoje é o aniversário do HyperCeiler!\nObrigado pelo seu apoio durante o ano passado e vamos continuar trabalhando juntos este ano!</string>
+    <string name="ic_qs_title_wifi">Wi-Fi</string>
+    <string name="ic_qs_title_cellular">Rede móvel</string>
+    <string name="ic_qs_title_bluetooth">Bluetooth</string>
+    <string name="ic_qs_title_gps">Localização</string>
+    <string name="ic_qs_title_nfc">NFC</string>
+    <string name="ic_qs_title_hotspot">Hotspot portátil</string>
+    <string name="ic_qs_title_flashlight">Lanterna</string>
+    <string name="ic_qs_title_settings">Configurações</string>
+    <string name="ic_qs_title_airplane">Modo avião</string>
+    <string name="ic_qs_title_autobrightness">Brilho automático</string>
+    <string name="ic_qs_title_vowifi1">VoWiFi SIM 1</string>
+    <string name="ic_qs_title_vowifi2">VoWiFi SIM 2</string>
 </resources>

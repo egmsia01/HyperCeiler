@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory>
         <Preference
+            android:layout="@layout/headtip_hyperceiler"
+            android:key="prefs_key_headtip_hyperceiler"
+            android:enabled="false"
+            android:title="@string/happy_birthday_hyperceiler"
+            app:isPreferenceVisible="false" />
+
+        <Preference
             android:layout="@layout/headtip_warn"
             android:key="prefs_key_headtip_warn"
             android:enabled="false"
@@ -245,6 +252,13 @@
             android:key="prefs_key_screenshot"
             android:summary="com.miui.screenshot"
             android:title="@string/screenshot" />
+
+        <com.sevtinge.hyperceiler.prefs.PreferenceHeader
+            android:fragment="com.sevtinge.hyperceiler.ui.fragment.SecurityAddFragment"
+            android:icon="@drawable/ic_securityadd"
+            android:key="prefs_key_securityadd"
+            android:summary="com.miui.securityadd"
+            android:title="@string/securityadd" />
 
         <com.sevtinge.hyperceiler.prefs.PreferenceHeader
             android:fragment="com.sevtinge.hyperceiler.ui.fragment.SecurityCenterFragment"

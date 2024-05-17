@@ -60,13 +60,12 @@ public class MainActivity extends NavigationActivity implements IResult {
         }
         handler = new Handler(this.getMainLooper());
         context = this;
-        int def = Integer.parseInt(PrefsUtils.mSharedPreferences.getString("prefs_key_log_level", "2"));
+        int def = Integer.parseInt(PrefsUtils.mSharedPreferences.getString("prefs_key_log_level", "3"));
         super.onCreate(savedInstanceState);
         new Thread(() -> SearchHelper.getAllMods(MainActivity.this, savedInstanceState != null)).start();
         Helpers.checkXposedActivateState(this);
         ShellInit.init(this);
-        PropUtils.setProp("persist.hyperceiler.log.level",
-                (ProjectApi.isRelease() ? def : ProjectApi.isCanary() ? (def == 0 ? 3 : 4) : def));
+        PropUtils.setProp("persist.hyperceiler.log.level", ProjectApi.isCanary() ? (def != 3 && def != 4 ? 3 : def) : def);
         appCrash = CrashData.toPkgList();
         handler.postDelayed(() -> {
             if (haveCrashReport()) {

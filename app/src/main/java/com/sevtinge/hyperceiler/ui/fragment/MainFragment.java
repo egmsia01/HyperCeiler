@@ -49,11 +49,13 @@ import com.sevtinge.hyperceiler.ui.fragment.helper.HomepageEntrance;
 import com.sevtinge.hyperceiler.utils.ThreadPoolManager;
 import com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt;
 import com.sevtinge.hyperceiler.utils.log.AndroidLogUtils;
+import com.sevtinge.hyperceiler.expansionpacks.utils.SignUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Objects;
 
 import moralnorm.preference.Preference;
@@ -66,6 +68,7 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
     Preference mAod;
     Preference mGuardProvider;
     Preference mHeadtipWarn;
+    Preference mHeadtipBirthday;
     Preference mHelpCantSeeApps;
     TipsPreference mTips;
     MainActivityContextHelper mainActivityContextHelper;
@@ -136,6 +139,7 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
         mGuardProvider = findPreference("prefs_key_guardprovider");
         mTips = findPreference("prefs_key_tips");
         mHeadtipWarn = findPreference("prefs_key_headtip_warn");
+        mHeadtipBirthday = findPreference("prefs_key_headtip_hyperceiler");
         mHelpCantSeeApps = findPreference("prefs_key_help_cant_see_app");
 
         mHelpCantSeeApps.setVisible(!getSharedPreferences().getBoolean("prefs_key_help_cant_see_apps_switch", false));
@@ -160,10 +164,19 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
 
         mainActivityContextHelper = new MainActivityContextHelper(requireContext());
 
+        isBirthday();
         isOfficialRom();
         if (!getIsOfficialRom()) isSignPass();
 
         mTips = findPreference("prefs_key_tips");
+    }
+
+    public void isBirthday() {
+        Calendar calendar = Calendar.getInstance();
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        mHeadtipBirthday.setVisible(currentMonth == Calendar.MAY && currentDay == 1);
+
     }
 
     public void isOfficialRom() {
@@ -174,24 +187,24 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
     public boolean getIsOfficialRom() {
         return (
                 !getBaseOs().startsWith("V") &&
-                !getBaseOs().startsWith("Xiaomi") &&
-                !getBaseOs().startsWith("Redmi") &&
-                !getBaseOs().startsWith("POCO") &&
-                !getBaseOs().isEmpty()
+                        !getBaseOs().startsWith("Xiaomi") &&
+                        !getBaseOs().startsWith("Redmi") &&
+                        !getBaseOs().startsWith("POCO") &&
+                        !getBaseOs().isEmpty()
         ) ||
                 !getRomAuthor().isEmpty() ||
                 Objects.equals(SystemSDKKt.getHost(), "xiaomi.eu") ||
                 (
                         !SystemSDKKt.getHost().startsWith("pangu-build-component-system") &&
-                        !SystemSDKKt.getHost().startsWith("non-pangu-pod") &&
-                        !Objects.equals(SystemSDKKt.getHost(), "xiaomi.com")
+                                !SystemSDKKt.getHost().startsWith("non-pangu-pod") &&
+                                !Objects.equals(SystemSDKKt.getHost(), "xiaomi.com")
                 );
     }
 
 
     public void isSignPass() {
         mHeadtipWarn.setTitle(R.string.headtip_warn_sign_verification_failed);
-        mHeadtipWarn.setVisible(!mainActivityContextHelper.isSignCheckPass());
+        mHeadtipWarn.setVisible(!SignUtils.isSignCheckPass(requireContext()));
     }
 
     @Override
