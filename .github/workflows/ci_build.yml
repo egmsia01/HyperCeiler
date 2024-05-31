@@ -55,7 +55,9 @@ jobs:
       - name: Build with Gradle (Canary)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         shell: bash
-        run: ./gradlew assembleCanary
+        run: |
+          ./gradlew assembleCanary
+          echo "IS_DEBUG=false" >> $GITHUB_ENV
 
       - name: Build with Gradle (Debug)
         if: github.event_name == 'pull_request'
@@ -95,7 +97,7 @@ jobs:
           compression-level: 9
 
   push_to_canary_channel:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && ${{ github.ref == 'refs/heads/main' && github.ref_type != 'tag' && contains(github.event.head_commit.message, '[skip post]') == false && contains(github.event.head_commit.message, 's#') == false }}
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.ref_type != 'tag' && !contains(github.event.head_commit.message, '[skip post]') && !contains(github.event.head_commit.message, 's#')
     runs-on: ubuntu-latest
     name: Push to Canary Channel
     needs: build_app

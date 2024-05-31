@@ -1,150 +1,132 @@
 package com.sevtinge.hyperceiler.module.base.dexkit;
 
-import static com.sevtinge.hyperceiler.module.base.dexkit.DexKitCacheFile.readFile;
-import static com.sevtinge.hyperceiler.module.base.tool.OtherTool.getPackageVersionCode;
-import static com.sevtinge.hyperceiler.utils.log.XposedLogUtils.logD;
 import static com.sevtinge.hyperceiler.utils.log.XposedLogUtils.logE;
-
-import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
-import static de.robv.android.xposed.XposedHelpers.findClassIfExists;
-
-import com.sevtinge.hyperceiler.module.base.dexkit.DexKitCacheFile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.luckypray.dexkit.query.FindMethod;
-import org.luckypray.dexkit.query.matchers.MethodMatcher;
-import org.luckypray.dexkit.result.MethodData;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-
+/**
+ * dexkit 数据转为 JSON 储存
+ */
 public class DexKitData {
+    private static final String TAG = "DexKitData";
+    public static final String EMPTY = "";
+    public static final ArrayList<String> EMPTYLIST = new ArrayList<>();
+    // public String label;
+    private final String tag;
+    private final String type;
+    private final String clazz;
+    private final String method;
+    private final ArrayList<String> param;
+    private final String field;
 
-    public static void hookMethodWithDexKit(String tag, XC_LoadPackage.LoadPackageParam loadPackageParam, MethodMatcher methodMatcher, Object... callback) {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        String callingClassName = stackTrace[3].getClassName();
-        int lastDotIndex = callingClassName.lastIndexOf('.');
-        callingClassName = callingClassName.substring(lastDotIndex + 1);
-        try {
-            String className;
-            String methodName;
-            List<String> paramList;
-            if (!DexKitCacheFile.isEmptyFile(loadPackageParam, callingClassName, tag)) {
-                try {
-                    className = getClassName(loadPackageParam, callingClassName, tag);
-                    methodName = getMethodName(loadPackageParam, callingClassName, tag);
-                    paramList = getParamList(loadPackageParam, callingClassName, tag);
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                MethodData methodData = DexKit.getDexKitBridge().findMethod(FindMethod.create()
-                        .matcher(methodMatcher)
-                ).singleOrThrow(() -> new IllegalStateException("No Such Method Found."));
-                className = methodData.getClassName();
-                methodName = methodData.getMethodName();
-                paramList = methodData.getParamNames();
-                putDexKitCache(loadPackageParam, callingClassName, tag, className, methodName, paramList);
-            }
-            if (paramList == null) {
-                findAndHookMethod(findClassIfExists(className, loadPackageParam.classLoader), methodName, callback);
-            } else {
-                findAndHookMethod(findClassIfExists(className, loadPackageParam.classLoader), methodName, paramList.toArray(), callback);
-            }
-        } catch (Exception e){
-logE(callingClassName, loadPackageParam.packageName, "Having trouble finding "+tag+": "+e);
-        }
+    public DexKitData(String tag, String type, String clazz,
+                      String method, ArrayList<String> param,
+                      String field) {
+        // label = l;
+        this.tag = tag;
+        this.type = type;
+        this.clazz = clazz;
+        this.method = method;
+        this.param = param;
+        this.field = field;
     }
 
-    public static void putDexKitCache(XC_LoadPackage.LoadPackageParam loadPackageParam, String callingClassName, String tag, String className, String methodName, List<String> paramList) {
+    public JSONObject toJSON() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("ClassName", className);
-            jsonObject.put("MethodName", methodName);
-            jsonObject.put("ParamList", paramList);
+            // jsonObject.put("l", label);
+            jsonObject.put("tag", tag);
+            jsonObject.put("type", type);
+            jsonObject.put("clazz", clazz);
+            jsonObject.put("method", method);
+            jsonObject.put("param", param);
+            jsonObject.put("field", field);
+            return jsonObject;
         } catch (JSONException e) {
-            throw new RuntimeException(e);
+            logE(TAG, "failed to convert JSON: " + e);
         }
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put(jsonObject);
-        DexKitCacheFile.writeFile(loadPackageParam, jsonArray, callingClassName, tag);
+        return jsonObject;
     }
 
-    public static String getClassName(XC_LoadPackage.LoadPackageParam loadPackageParam, String callingClassName, String tag) throws JSONException {
-        return readFile(loadPackageParam, callingClassName, tag).getJSONObject(0).getString("ClassName");
+    public static String getTAG(JSONObject jsonObject) {
+        try {
+            return jsonObject.getString("tag");
+        } catch (JSONException e) {
+            logE(TAG, "failed to get tag!" + e);
+        }
+        return "null";
     }
 
-    public static String getMethodName(XC_LoadPackage.LoadPackageParam loadPackageParam, String callingClassName, String tag) throws JSONException {
-        return readFile(loadPackageParam, callingClassName, tag).getJSONObject(0).getString("MethodName");
+    public static String getType(JSONObject jsonObject) {
+        try {
+            return jsonObject.getString("type");
+        } catch (JSONException e) {
+            logE(TAG, "failed to get type!" + e);
+        }
+        return "null";
     }
 
-    public static List<String> getParamList(XC_LoadPackage.LoadPackageParam loadPackageParam, String callingClassName, String tag) throws JSONException {
-        JSONObject jsonObject = readFile(loadPackageParam, callingClassName, tag).getJSONObject(0);
-        if (jsonObject.has("ParamList")) {
-            List<String> list = Arrays.asList(jsonObject.getString("ParamList").split(","));
-            if (!list.isEmpty()) {
-                return list;
-            }
+    public static String getClazz(JSONObject jsonObject) {
+        try {
+            return jsonObject.getString("clazz");
+        } catch (JSONException e) {
+            logE(TAG, "failed to get class list: " + e);
         }
         return null;
     }
 
-    public static class MethodHookWithDexKit extends XC_MethodHook {
-
-        protected void before(MethodHookParam param) throws Throwable {
+    public static String getMethod(JSONObject jsonObject) {
+        try {
+            return jsonObject.getString("method");
+        } catch (JSONException e) {
+            logE(TAG, "failed to get method!" + e);
         }
-
-        protected void after(MethodHookParam param) throws Throwable {
-        }
-
-        public MethodHookWithDexKit() {
-            super();
-        }
-
-        public MethodHookWithDexKit(int priority) {
-            super(priority);
-        }
-
-        public static MethodHookWithDexKit returnConstant(final Object result) {
-            return new MethodHookWithDexKit(PRIORITY_DEFAULT) {
-                @Override
-                protected void before(MethodHookParam param) {
-                    param.setResult(result);
-                }
-            };
-        }
-
-        public static final MethodHookWithDexKit DO_NOTHING = new MethodHookWithDexKit(PRIORITY_HIGHEST * 2) {
-            @Override
-            protected void before(MethodHookParam param) {
-                param.setResult(null);
-            }
-        };
-
-        @Override
-        public void beforeHookedMethod(MethodHookParam param) throws Throwable {
-            try {
-                this.before(param);
-            } catch (Throwable t) {
-                // logE("BeforeHook", t);
-            }
-        }
-
-        @Override
-        public void afterHookedMethod(MethodHookParam param) throws Throwable {
-            try {
-                this.after(param);
-            } catch (Throwable t) {
-                // logE("AfterHook", t);
-            }
-        }
+        return null;
     }
 
+    public static ArrayList<String> getParam(JSONObject jsonObject) {
+        try {
+            return stringToArrays(jsonObject.getString("param"));
+        } catch (JSONException e) {
+            logE(TAG, "failed to get param!" + e);
+        }
+        return new ArrayList<>();
+    }
+
+    public static String getFiled(JSONObject jsonObject) {
+        try {
+            return jsonObject.getString("field");
+        } catch (JSONException e) {
+            logE(TAG, "failed to get field!" + e);
+        }
+        return null;
+    }
+
+    public static ArrayList<String> stringToArrays(String s) {
+        s = s.replace("[", "").replace("]", "").replace(" ", "");
+        return new ArrayList<>(Arrays.asList(s.split(",")));
+    }
+
+    public static ArrayList<JSONObject> toArray(String json) {
+        try {
+            if (json == null) return new ArrayList<>();
+            if (json.isEmpty()) return new ArrayList<>();
+            if ("[]".equals(json)) return new ArrayList<>();
+            ArrayList<JSONObject> list = new ArrayList<>();
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject obj = jsonArray.getJSONObject(i);
+                list.add(obj);
+            }
+            return list;
+        } catch (Throwable e) {
+            logE(TAG, "Failed to convert Array!" + e);
+        }
+        return new ArrayList<>();
+    }
 }

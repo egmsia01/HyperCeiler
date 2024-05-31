@@ -22,26 +22,38 @@ import static com.sevtinge.hyperceiler.module.base.tool.OtherTool.getPackageVers
 
 import com.sevtinge.hyperceiler.module.base.BaseHook;
 import com.sevtinge.hyperceiler.module.base.dexkit.DexKit;
-import com.sevtinge.hyperceiler.module.base.dexkit.DexKitData;
+import com.sevtinge.hyperceiler.module.base.dexkit.IDexKit;
 
+import org.luckypray.dexkit.DexKitBridge;
 import org.luckypray.dexkit.query.FindMethod;
 import org.luckypray.dexkit.query.matchers.MethodMatcher;
 import org.luckypray.dexkit.result.MethodData;
 
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
+
+import de.robv.android.xposed.XC_MethodHook;
 
 public class EnableDebugEnvironment extends BaseHook {
     @Override
     public void init() throws NoSuchMethodException {
-        DexKitData.hookMethodWithDexKit("Key", lpparam,
-                MethodMatcher.create()
-                        .usingStrings("pref_key_debug_mode_" + getPackageVersionCode(lpparam))
-                        .name("getDebugMode")
-                        .returnType(boolean.class), new DexKitData.MethodHookWithDexKit() {
-                    @Override
-                    protected void before(MethodHookParam param) throws Throwable {
-                        param.setResult(true);
-                    }
-                });
+        Method method = (Method) DexKit.getDexKitBridge("DebugMode", new IDexKit() {
+            @Override
+            public AnnotatedElement dexkit(DexKitBridge bridge) throws ReflectiveOperationException {
+                MethodData methodData = bridge.findMethod(FindMethod.create()
+                        .matcher(MethodMatcher.create()
+                                .usingStrings("pref_key_debug_mode_" + getPackageVersionCode(lpparam))
+                                .name("getDebugMode")
+                                .returnType(boolean.class)
+                        )).singleOrNull();
+                return methodData.getMethodInstance(lpparam.classLoader);
+            }
+        });
+        hookMethod(method, new MethodHook() {
+            @Override
+            protected void before(XC_MethodHook.MethodHookParam param) throws Throwable {
+                param.setResult(true);
+            }
+        });
     }
 }
