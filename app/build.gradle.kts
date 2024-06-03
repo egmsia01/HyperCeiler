@@ -79,8 +79,8 @@ android {
         applicationId = namespace
         minSdk = 33
         targetSdk = 34
-        versionCode = 145
-        versionName = "2.4.145"
+        versionCode = 146
+        versionName = "2.4.146"
 
         val buildTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
         buildConfigField("String", "BUILD_TIME", "\"$buildTime\"")
@@ -217,6 +217,7 @@ dependencies {
     implementation(libs.hiddenapibypass)
     implementation(libs.gson)
     implementation(libs.commons.codec)
+    implementation(libs.hooktool)
 
     implementation(libs.core)
     implementation(libs.collection)
