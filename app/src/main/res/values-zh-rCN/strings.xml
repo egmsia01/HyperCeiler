@@ -369,6 +369,8 @@
     <string name="system_framework_volume_first_press">音量即时调整</string>
     <string name="system_framework_volume_separate_control">音量独立控制</string>
     <string name="system_framework_volume_disable_safe">移除高音量安全限制</string>
+    <string name="default_volume_safe_all">对全部情况启用</string>
+    <string name="default_volume_safe_headset">仅连接耳机时启用</string>
     <string name="system_framework_volume_separate_slider">通知音量滑块</string>
     <string name="system_framework_volume_media_steps">媒体音量阶数</string>
     <string name="system_framework_volume_media_steps_desc">可能会导致音量条的滚动卡顿或蓝牙音量异常</string>
@@ -466,6 +468,8 @@
     <string name="system_framework_core_patch_enhanced_mode_desc">可以解决一些应用内部的完整性校验，一般无需开启</string>
     <string name="system_framework_disable_low_api_check">禁用低 API 校验</string>
     <string name="system_framework_disable_low_api_check_desc">允许安装 TargetSDK 低于 23 的应用</string>
+    <string name="system_framework_disable_persistent">禁用持久性检查</string>
+    <string name="system_framework_disable_persistent_more">允许安装声明为持久性的应用</string>
     <!--浏览器-->
     <string name="browser">浏览器</string>
     <string name="browser_debug_mode">解锁开发者选项</string>
@@ -646,9 +650,8 @@
     <string name="system_ui_statusbar_iconmanage_privacy_title">敏感信息</string>
     <string name="system_ui_statusbar_iconmanage_left_title">图标左侧显示</string>
     <string name="system_ui_statusbar_iconmanage_right_title">图标右侧显示</string>
-    <string name="system_ui_status_bar_icon_paw">兽爪</string>
-    <string name="system_ui_status_bar_icon_wifi">WIFI</string>
-    <string name="system_ui_status_bar_icon_wifi_slave">辅助 WIFI</string>
+    <string name="system_ui_status_bar_icon_wifi">WIFI 图标</string>
+    <string name="system_ui_status_bar_icon_wifi_slave">辅助 WIFI 图标</string>
     <string name="system_ui_status_bar_icon_wifi_standard">WIFI 标准</string>
     <string name="system_ui_status_bar_icon_hotspot">WIFI 热点</string>
     <string name="system_ui_status_bar_icon_wifi_network_indicator">网络活动指示器</string>
@@ -891,7 +894,7 @@
     <string name="system_ui_other_title">其他</string>
     <string name="system_ui_disable_volume">原生音量条</string>
     <string name="system_ui_disable_power">原生关机菜单</string>
-    <string name="system_ui_disable_power_desc">MIUI 为旧版菜单，Hyper 为原生菜单</string>
+    <string name="system_ui_disable_power_desc">MIUI 为旧版菜单，HyperOS 为原生菜单</string>
     <string name="system_ui_disable_volume_desc">针对 MIUI/HyperOS 音量条的修改无法作用于原生音量条</string>
     <string name="system_ui_unlock_clipboard">解锁原生剪切板编辑器</string>
     <string name="system_ui_unlock_clipboard_desc">实验性功能，会导致 MIUI/HyperOS 的编辑器一并弹出</string>

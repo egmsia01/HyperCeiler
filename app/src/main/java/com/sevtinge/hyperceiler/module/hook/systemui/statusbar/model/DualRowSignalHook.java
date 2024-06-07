@@ -302,7 +302,7 @@ public class DualRowSignalHook extends BaseHook {
     }
 
     private void setDualRowStyle() {
-       if (rightMargin != 0 || leftMargin != 0 || iconScale != 10 || verticalOffset != 8) {
+        if (rightMargin != 0 || leftMargin != 0 || iconScale != 10 || verticalOffset != 8) {
             MethodHook styleHook = new MethodHook() {
                 @Override
                 protected void after(final MethodHookParam param) {
