@@ -412,6 +412,7 @@
     <string name="system_framework_disable_app_link_verify_desc">Revert to opening supported apps directly when opening links without enabling supported links in app settings</string>
     <string name="system_framework_clean_share_menu">Clean up share menu</string>
     <string name="system_framework_clean_share_apps">Selected applications</string>
+    <string name="system_framework_auto_start_apps">Restriction chain exemptions</string>
     <string name="system_framework_clean_share_apps_desc">The selected app will not appear in the share menu</string>
     <string name="system_framework_clean_open_menu">Clean up the open with menu</string>
     <string name="system_framework_clean_open_apps">Selected applications</string>
@@ -1725,4 +1726,10 @@
     <string name="ic_qs_title_autobrightness">Auto Brightness</string>
     <string name="ic_qs_title_vowifi1">VoWiFi SIM1</string>
     <string name="ic_qs_title_vowifi2">VoWiFi SIM2</string>
+
+    <!--Telecom-->
+    <string name="telecom">Phone Calls</string>
+    <string name="scam_reminder_bypass_caption">Allow Dail call-forwarding MMI code directly</string>
+    <string name="scam_reminder_bypass_description">Allow Dail MMI Code like **21*8# to enable call-forwarding directly</string>
+
 </resources>
