@@ -8,6 +8,7 @@
         <item>com.android.camera</item> <!--相机-->
         <item>com.android.externalstorage</item> <!--外部储存设备-->
         <item>com.android.fileexplorer</item> <!--文件管理-->
+        <item>com.android.htmlviewer</item> <!--HTML 查看器-->
         <item>com.android.incallui</item> <!--电话-->
         <item>com.android.mms</item> <!--短信-->
         <item>com.android.nfc</item> <!--NFC-->
@@ -19,6 +20,7 @@
         <item>com.android.systemui</item> <!--系统界面-->
         <item>com.android.thememanager</item> <!--主题壁纸-->
         <item>com.android.updater</item> <!--系统更新-->
+        <item>com.duokan.phone.remotecontroller</item> <!--万能遥控-->
         <item>com.lbe.security.miui</item> <!--权限管理服务-->
         <item>com.milink.service</item> <!--投屏-->
         <item>com.miui.aod</item> <!--万象息屏-->

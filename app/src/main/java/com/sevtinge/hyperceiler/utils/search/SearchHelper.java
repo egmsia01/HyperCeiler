@@ -258,6 +258,9 @@ public class SearchHelper {
         parsePrefXml(context, R.xml.mms,
                 "com.sevtinge.hyperceiler.ui.fragment.MmsFragment");
 
+        parsePrefXml(context, R.xml.remotecontroller,
+                "com.sevtinge.hyperceiler.ui.fragment.RemoteControllerFragment");
+
         parsePrefXml(context, R.xml.nfc,
                 "com.sevtinge.hyperceiler.ui.fragment.NfcFragment");
 
@@ -334,11 +337,17 @@ public class SearchHelper {
         parsePrefXml(context, R.xml.tsmclient,
                 "com.sevtinge.hyperceiler.ui.fragment.TsmClientFragment");
 
+        parsePrefXml(context, R.xml.html_viewer,
+                "com.sevtinge.hyperceiler.ui.fragment.HtmlViewerFragment");
+
         parsePrefXml(context, R.xml.weather,
                 "com.sevtinge.hyperceiler.ui.fragment.WeatherFragment");
 
         parsePrefXml(context, R.xml.aiasst,
                 "com.sevtinge.hyperceiler.ui.fragment.AiAsstFragment");
+
+        parsePrefXml(context, R.xml.telecom,
+                "com.sevtinge.hyperceiler.ui.fragment.TelecomFragment");
 
         parsePrefXml(context, R.xml.tsmclient,
                 "com.sevtinge.hyperceiler.ui.fragment.TsmClientFragment");

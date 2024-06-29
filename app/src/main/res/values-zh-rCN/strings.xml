@@ -356,7 +356,7 @@
     <string name="system_framework_freeform_count">多小窗</string>
     <string name="system_framework_disable_freeform_blacklist">强制允许小窗</string>
     <string name="system_framework_disable_freeform_blacklist_desc">忽略系统黑名单与软件禁用小窗</string>
-    <string name="system_framework_freeform_sticky">记住状态</string>
+    <string name="system_framework_freeform_sticky">记住状态及位置</string>
     <string name="system_framework_freeform_bubble">小窗气泡</string>
     <string name="system_framework_freeform_recents_to_small_freeform">将所有小窗转为迷你小窗</string>
     <string name="system_framework_freeform_recents_to_small_freeform_desc">在最近任务中将所有小窗转为迷你小窗显示\n此功能为实验性功能，具有较高不稳定性</string>
@@ -588,6 +588,7 @@
     <string name="system_ui_lock_screen_block_editor_title">禁用长按进入锁屏编辑</string>
     <string name="system_ui_lock_screen_allow_third_face">允许三方锁屏界面唤醒系统验证识别</string>
     <string name="system_ui_lock_screen_allow_third_face_desc">允许在第三方应用显示的锁屏界面时，正常使用人脸及指纹识别</string>
+    <string name="system_ui_lock_screen_disable_unlock_by_ble_toast">禁止显示 \"已通过蓝牙设备解锁\" Toast</string>
 
     <string name="system_ui_navigation_title">导航栏</string>
     <string name="system_ui_navigation_handle_title">手势提示线</string>
@@ -908,6 +909,8 @@
     <string name="system_ui_disable_bluetooth_restrict">禁用蓝牙临时关闭</string>
     <string name="system_ui_disable_miui_multi_win_switch">隐藏快捷窗口按钮</string>
     <string name="system_ui_remove_miui_multi_win_switch">禁用快捷窗口按钮</string>
+    <string name="system_ui_disable_infinitymode_gesture">禁用无极缩放手势</string>
+    <string name="system_ui_disable_infinitymode_gesture_sum">仅供平板使用</string>
     <string name="system_ui_disable_miui_multi_win_switch_desc">隐藏常驻的三个小点，包括小窗顶部和 HyperOS for Pad 横屏顶部中间的按钮 (不影响功能使用)</string>
     <string name="system_ui_disable_bottombar">隐藏小窗的手势提示线</string>
     <string name="system_ui_notification_freeform">更多应用通知栏下拉打开小窗</string>
@@ -996,6 +999,9 @@
     <string name="theme_manager_diable_ads_desc">将 \"猜你喜欢\" 的广告替换为空白卡片，其余位置的广告将完全移除</string>
     <string name="theme_manager_enable_pad_theme">启用 Pad 主题</string>
     <string name="theme_manager_enable_fold_theme">启用 Fold 主题</string>
+    <!--万能遥控-->
+    <string name="remotecontroller">万能遥控</string>
+    <string name="remotecontroller_disable_ad">禁用推广</string>
     <!--系统更新-->
     <string name="updater">系统更新</string>
     <string name="updater_enable_miui_version">启用伪装版本</string>
@@ -1380,6 +1386,9 @@
     <string name="nfc">NFC 服务</string>
     <string name="nfc_disable_sound">禁用 NFC 提示音</string>
     <string name="nfc_allow_information_screen">允许息屏时识别</string>
+    <!--HTML Viewer-->
+    <string name="html_viewer">HTML 查看器</string>
+    <string name="html_viewer_disable_cloud_control">禁用云控</string>
     <!--智能助理-->
     <string name="personal_assistant">智能助理</string>
     <string name="personal_assistant_fold_widget_enable">Pad/Fold 小部件</string>
@@ -1440,6 +1449,7 @@
     <string name="security_center_get_number">管理应用获取手机号并一键登录</string>
     <string name="security_center_applock_pin_scramble">应用锁乱序 PIN</string>
     <string name="security_center_power_saver">禁止妙享省电</string>
+    <string name="security_center_privacy_thumbnail_blur">禁止自启模糊预览图</string>
     <string name="security_center_power_saver_desc">禁止在通过小米妙享镜像流转屏幕时开启省电模式</string>
     <string name="security_center_applock_pin_scramble_desc">随机更改应用锁 PIN 键盘顺序</string>
     <string name="security_center_beauty_light_auto">解锁智能调节补光灯亮度</string>

@@ -352,7 +352,7 @@
     <string name="system_framework_freeform_count">Multiple freeform</string>
     <string name="system_framework_disable_freeform_blacklist">Force small freeform to be allowed</string>
     <string name="system_framework_disable_freeform_blacklist_desc">Ignore the system blacklist and software ban freeform</string>
-    <string name="system_framework_freeform_sticky">Remember state</string>
+    <string name="system_framework_freeform_sticky">Remember state and position</string>
     <string name="system_framework_freeform_bubble">Bubble freeform</string>
     <string name="system_framework_freeform_recents_to_small_freeform">Turn all freeform into mini freeform</string>
     <string name="system_framework_freeform_recents_to_small_freeform_desc">Turn all freeform into mini freeform in recent tasks\nThis feature is an experimental feature with high instability</string>
@@ -581,6 +581,7 @@
     <string name="system_ui_lock_screen_block_editor_title">Disable long press to access lock screen editing</string>
     <string name="system_ui_lock_screen_allow_third_face">Allows the system to be woken up to verify recognition on a third-party lock screen</string>
     <string name="system_ui_lock_screen_allow_third_face_desc">Allows face and fingerprint recognition to be used normally on the lock screen displayed by third-party apps</string>
+    <string name="system_ui_lock_screen_disable_unlock_by_ble_toast">Disable show unlock by bluetooth toast</string>
     <string name="system_ui_navigation_title">Navigation</string>
     <string name="system_ui_navigation_handle_title">Handle line</string>
     <string name="system_ui_hide_navigation_bar">Hide Navigation Bar</string>
@@ -888,6 +889,8 @@
     <string name="system_ui_disable_miui_multi_win_switch">Hide the Convenience Window button</string>
     <string name="system_ui_disable_miui_multi_win_switch_desc">Hide the three permanent dots, including the top of the small window and the button in the middle of the top of the HyperOS for Pad horizontal screen (does not affect the use of functions)</string>
     <string name="system_ui_remove_miui_multi_win_switch">Disable the Convenience Window button</string>
+    <string name="system_ui_disable_infinitymode_gesture">Disable infinite zoom gestures</string>
+    <string name="system_ui_disable_infinitymode_gesture_sum">For tablet use only</string>
     <string name="system_ui_disable_bottombar">Hide the bottom gesture of the small window</string>
     <string name="system_ui_others_pct_title">Data display</string>
     <string name="system_showpct_title">Displays the brightness percentage</string>
@@ -971,6 +974,9 @@
     <string name="theme_manager_diable_ads_desc">Replace \"guess what you like\" ads with blank cards, and remove the rest of the ads completely</string>
     <string name="theme_manager_enable_pad_theme">Enable Pad theme</string>
     <string name="theme_manager_enable_fold_theme">Enable Fold theme</string>
+    <!--remotecontroller-->
+    <string name="remotecontroller">Remote Controller</string>
+    <string name="remotecontroller_disable_ad">Disable Ad</string>
     <!--Updater-->
     <string name="updater">Updater</string>
     <string name="updater_enable_miui_version">Enable Fake version for Updater</string>
@@ -1350,6 +1356,9 @@
     <string name="nfc">NFC Service</string>
     <string name="nfc_disable_sound">Disable NFC notification sound</string>
     <string name="nfc_allow_information_screen">Allow recognition when screen is off</string>
+    <!--HTML Viewer-->
+    <string name="html_viewer">HTML Viewer</string>
+    <string name="html_viewer_disable_cloud_control">Disable Cloud control</string>
     <!--App vault-->
     <string name="personal_assistant">App vault</string>
     <string name="personal_assistant_fold_widget_enable">Pad/Fold weight</string>
@@ -1410,6 +1419,7 @@
     <string name="security_center_get_number">Manage the application to obtain the mobile phone number and log in with one click</string>
     <string name="security_center_applock_pin_scramble">Applock out of order PIN</string>
     <string name="security_center_power_saver">Magic Share doesn\'t save power</string>
+    <string name="security_center_privacy_thumbnail_blur">Disable self-starting blurred preview images</string>
     <string name="security_center_power_saver_desc">Disable power saving mode when screen mirroring via Mi Smart Hub</string>
     <string name="security_center_applock_pin_scramble_desc">Randomly change app lock PIN keypad sequence</string>
     <string name="security_center_beauty_light_auto">Unlock Adjust fill light brightness automatically</string>
