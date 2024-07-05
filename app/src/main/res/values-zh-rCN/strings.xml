@@ -950,6 +950,8 @@
     <string name="system_usb_use_MIDI">MIDI 模式</string>
     <string name="system_usb_reverse_charge">反向充电</string>
     <string name="system_usb_tethering">USB 网络共享</string>
+    <string name="system_settings_anti_ques">禁用设备名称敏感词校验</string>
+    <string name="system_settings_anti_ques_desc">不得使用此功能进行违反当地及国家法律条文规定的行为</string>
 
     <string name="system_settings_connection_sharing_title">网络连接与共享</string>
     <string name="system_settings_linkturbo">解除网络加速应用限制</string>
@@ -1236,6 +1238,8 @@
     <string name="home_title_custom_anim_param">自定义动画曲线</string>
     <string name="home_title_custom_anim_param_damping_title">回弹</string>
     <string name="home_title_custom_anim_param_stiffness_title">刚度</string>
+    <string name="home_title_hide_report_text">隐藏举报入口</string>
+    <string name="home_title_hide_report_text_desc">隐藏部分应用在卸载对话框的 \"举报该应用\" 入口</string>
 
     <string name="home_recent">最近任务</string>
     <string name="home_recent_animation_speed">动画速度</string>
@@ -1534,7 +1538,7 @@
     <!--MiTrustService-->
     <string name="trustservice">MiTrustService</string>
     <string name="trustservice_disable_mrm">禁用风险检测</string>
-    <string name="trustservice_disable_mrm_desc">实验性功能，不得使用此功能进行违反当地及国家法律条文的规定</string>
+    <string name="trustservice_disable_mrm_desc">实验性功能，不得使用此功能进行违反当地及国家法律条文规定的行为</string>
     <!--小米智能卡-->
     <string name="tsmclient">小米智能卡</string>
     <string name="tsmclient_auto_nfc">自动管理 NFC</string>
