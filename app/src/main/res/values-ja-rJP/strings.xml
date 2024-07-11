@@ -912,6 +912,8 @@
     <string name="system_settings_transition_animation_scale">トランジションアニメスケール</string>
     <string name="system_settings_animator_duration_scale">Animator 再生時間スケール</string>
     <string name="system_settings_allow_never_lock_screen">画面ロックなしの設定を許可</string>
+    <string name="system_settings_anti_ques">デバイス名のセンシティブワード検出を無効化</string>
+    <string name="system_settings_anti_ques_desc">地域または国の法律に違反する場合は使用しないでください</string>
     <!--Themes-->
     <string name="theme_manager">テーマ</string>
     <string name="theme_manager_version_code_modify">バージョン検出の調整</string>
@@ -1153,6 +1155,8 @@
     <string name="home_title_custom_anim_param">アニメーションパラメーターのカスタム</string>
     <string name="home_title_custom_anim_param_damping_title">減衰</string>
     <string name="home_title_custom_anim_param_stiffness_title">剛性</string>
+    <string name="home_title_hide_report_text">報告のテキストを非表示</string>
+    <string name="home_title_hide_report_text_desc">アンインストールダイアログで報告のテキストを隠します</string>
     <string name="home_recent">アプリ履歴</string>
     <string name="home_recent_animation_speed">アニメーションの速度</string>
     <string name="home_recent_disable_wallpaper_dimming">壁紙の調光を無効化</string>
@@ -1662,12 +1666,12 @@
     <string name="headtip_warn_sign_verification_failed">署名の検証に失敗しました。現在使用しているバージョンは Re.chronoRain の公式バージョンではないため、悪意のあるコードが含まれている可能性があります。</string>
     <string name="headtip_tip_long_press_to_copy">長押しまたは二回タップでテキストを選択したり、コピーして開発者にフィードバックしたりできます。</string>
     <string name="safe_mode_title">警告</string>
-    <string name="safe_mode_desc">は複数のクラッシュによりセーフモードに入り、HyperCeiler の機能が一時的に無効になりました。 \nOKを押すとセーフモードを無効化し、キャンセルを押すと後で対処できます。</string>
+    <string name="safe_mode_desc">%1$sは複数のクラッシュによりセーフモードに入り、HyperCeiler の機能が一時的に無効になりました。 \nOKを押すとセーフモードを無効化し、キャンセルを押すと後で対処できます。</string>
     <string name="safe_mode_history">例外記録を表示</string>
     <string name="safe_mode_cancel">セーフモードを無効化</string>
     <string name="safe_mode_ok">後で対処する</string>
     <string name="safe_mode_later_title">ヒント</string>
-    <string name="safe_mode_later_desc">はまだセーフモードになっており、HyperCeiler の機能が無効になっています。セーフモードを無効にしますか？</string>
+    <string name="safe_mode_later_desc">%1$sはまだセーフモードになっており、HyperCeiler の機能が無効になっています。セーフモードを無効にしますか？</string>
     <string name="safe_mode_recorder_title">例外レコード</string>
     <string name="safe_mode_recorder_file">ファイル</string>
     <string name="safe_mode_recorder_class">クラス</string>

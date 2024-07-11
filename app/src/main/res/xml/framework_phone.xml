@@ -6,6 +6,12 @@
 
         <SwitchPreference
             android:defaultValue="false"
+            android:key="prefs_key_system_framework_network_flightmode_hotspot"
+            android:summary="@string/phone_flightmode_hotspot_desc"
+            android:title="@string/phone_flightmode_hotspot" />
+
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="prefs_key_phone_double_5g_nr"
             android:summary="@string/phone_double_5g_nr_desc"
             android:title="@string/phone_double_5g_nr" />

@@ -343,6 +343,8 @@ Chức năng này là chức năng thử nghiệm có độ ổn định cao</st
     <string name="phone_n28_desc">Hỗ trợ băng tần n28 (NR)</string>
     <string name="phone_n5_n8">Băng tần n5/n8</string>
     <string name="phone_n5_n8_desc">Nhập *#*#65686633#*#* trên giao diện quay số để bật băng tần n5/n8. Nếu hiển thị Đã bật chế độ N5 và N8 nghĩa là đã bật thành công.</string>
+    <string name="phone_flightmode_hotspot">Cho phép bật điểm phát sóng ở chế độ máy bay</string>
+    <string name="phone_flightmode_hotspot_desc">Cho phép mở điểm phát sóng WiFi ở chế độ máy bay</string>
     <string name="phone_additional_network_settings">Cài đặt mạng bổ sung</string>
     <string name="system_framework_screen_title">Hiển thị &amp; thông báo</string>
     <string name="system_framework_core_title">Lõi bên dưới</string>
@@ -914,6 +916,8 @@ Chức năng này là chức năng thử nghiệm có độ ổn định cao</st
     <string name="system_settings_transition_animation_scale">Tỷ lệ ảnh động chuyển tiếp</string>
     <string name="system_settings_animator_duration_scale">Tỷ lệ thời lượng ảnh động</string>
     <string name="system_settings_allow_never_lock_screen">Cho phép không bao giờ khóa màn hình</string>
+    <string name="system_settings_anti_ques">Từ cổ</string>
+    <string name="system_settings_anti_ques_desc">Bạn có thể không sử dụng được tính năng này vì vi phạm luật pháp địa phương hoặc quốc gia</string>
     <!--Themes-->
     <string name="theme_manager">Chủ đề</string>
     <string name="theme_manager_version_code_modify">Điều chỉnh phiên bản phát hiện</string>
@@ -1159,6 +1163,8 @@ Chức năng này là chức năng thử nghiệm có độ ổn định cao</st
     <string name="home_title_custom_anim_param">Tuỳ chỉnh thông số hoạt ảnh</string>
     <string name="home_title_custom_anim_param_damping_title">Giảm dần</string>
     <string name="home_title_custom_anim_param_stiffness_title">Độ gấp</string>
+    <string name="home_title_hide_report_text">Ẩn văn bản báo cáo</string>
+    <string name="home_title_hide_report_text_desc">Ẩn văn bản báo cáo trong hộp thoại gỡ cài đặt</string>
     <string name="home_recent">Gần đây</string>
     <string name="home_recent_animation_speed">Tốc độ của hoạt ảnh</string>
     <string name="home_recent_disable_wallpaper_dimming">Tắt làm mờ hình nền</string>
@@ -1316,6 +1322,7 @@ Chức năng này là chức năng thử nghiệm có độ ổn định cao</st
     <string name="personal_assistant_blur_value">Kiểu nền</string>
     <string name="personal_assistant_blurradius">Giá trị làm mờ nền trợ lý cá nhân</string>
     <string name="personal_assistant_color">Màu trợ lý cá nhân</string>
+    <string name="personal_assistant_unlock_widget_count_limit">Mở khóa giới hạn số lượng tiện ích</string>
     <!--Battery and performance-->
     <string name="powerkeeper">Pin và hiệu suất</string>
     <string name="powerkeeper_custom_refresh_rate">Tùy chỉnh tốc độ làm mới cao</string>
@@ -1676,12 +1683,12 @@ Hãy đảm bảo rằng các ứng dụng hệ thống có siêu dữ liệu is
     <string name="headtip_warn_sign_verification_failed">Xác minh chữ ký không thành công và phiên bản hiện tại bạn đang sử dụng có thể không phải là phiên bản chính thức của Re.chronoRain và có thể chứa mã độc.</string>
     <string name="headtip_tip_long_press_to_copy">Bạn có thể chọn văn bản sau khi nhấn và nhấp đúp vào văn bản đó hoặc sao chép văn bản đó và gửi lại cho nhà phát triển.</string>
     <string name="safe_mode_title">Cảnh báo</string>
-    <string name="safe_mode_desc">bạn đã vào Chế độ an toàn do một số sự cố và các tính năng của HyperCeiler đã tạm thời bị tắt.\nNhấp OK để hủy hoặc nhấp Hủy để tiếp tục sau.</string>
+    <string name="safe_mode_desc">%1$s bạn đã vào Chế độ an toàn do một số sự cố và các tính năng của HyperCeiler đã tạm thời bị tắt.\nNhấp OK để hủy hoặc nhấp Hủy để tiếp tục sau.</string>
     <string name="safe_mode_history">Xem nhật ký ngoại lệ</string>
     <string name="safe_mode_cancel">Tắt chế độ an toàn</string>
     <string name="safe_mode_ok">Tiếp tục sau</string>
     <string name="safe_mode_later_title">Mẹo</string>
-    <string name="safe_mode_later_desc">Bạn vẫn đang ở Chế độ an toàn và các tính năng HyperCeiler bị tắt. Bạn có muốn tắt Chế độ an toàn không?</string>
+    <string name="safe_mode_later_desc">%1$s Bạn vẫn đang ở Chế độ an toàn và các tính năng HyperCeiler bị tắt. Bạn có muốn tắt Chế độ an toàn không?</string>
     <string name="safe_mode_recorder_title">Bản ghi ngoại lệ</string>
     <string name="safe_mode_recorder_file">Tệp tin</string>
     <string name="safe_mode_recorder_class">Lớp</string>

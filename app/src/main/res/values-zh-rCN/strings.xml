@@ -401,6 +401,8 @@
     <string name="phone_n28_desc">支持 n28 频段 (NR)</string>
     <string name="phone_n5_n8">解锁 n5/n8 频段</string>
     <string name="phone_n5_n8_desc">在拨号界面输入 *#*#65686633#*#* 以打开 n5/n8 频段，若显示 \"enable N5 and N8 Mode\"，则开启成功</string>
+    <string name="phone_flightmode_hotspot">飞行模式下可开启热点</string>
+    <string name="phone_flightmode_hotspot_desc">允许在飞行模式下开启 WLAN 热点</string>
 
     <string name="system_framework_screen_title">显示与通知</string>
     <string name="system_framework_core_title">底层</string>
@@ -1402,6 +1404,7 @@
     <string name="personal_assistant_blur_value">背景样式</string>
     <string name="personal_assistant_blurradius">负一屏背景模糊程度</string>
     <string name="personal_assistant_color">负一屏背景叠加层颜色</string>
+    <string name="personal_assistant_unlock_widget_count_limit">解除小部件数量限制</string>
     <!--电量与性能-->
     <string name="powerkeeper">电量与性能</string>
     <string name="powerkeeper_custom_refresh_rate">自定义高刷新率应用</string>
@@ -1780,12 +1783,12 @@
     <string name="enable_suggest">启用推荐</string>
 
     <string name="safe_mode_title">警告</string>
-    <string name="safe_mode_desc">由于多次崩溃，已进入安全模式，HyperCeiler 功能已暂时停用。\n您可以解除其的安全模式，也可稍后进入 HyperCeiler 处理。</string>
+    <string name="safe_mode_desc">%1$s由于多次崩溃，已进入安全模式，HyperCeiler 对其的功能已停用。\n您可以解除对其的安全模式，或稍后进入 HyperCeiler 处理。</string>
     <string name="safe_mode_history">查看异常记录</string>
     <string name="safe_mode_cancel">解除</string>
     <string name="safe_mode_ok">稍后处理</string>
     <string name="safe_mode_later_title">提示</string>
-    <string name="safe_mode_later_desc">处于安全模式中，HyperCeiler 对其的功能已停用。\n您可以解除其的安全模式，也可稍后处理。</string>
+    <string name="safe_mode_later_desc">%1$s目前处于安全模式中，HyperCeiler 对其的功能已停用。\n您可以解除对其的安全模式，或稍后处理。</string>
     <string name="safe_mode_recorder_title">异常记录</string>
     <string name="safe_mode_recorder_file">文件名</string>
     <string name="safe_mode_recorder_class">抛出类</string>
