@@ -21,6 +21,7 @@ package com.sevtinge.hyperceiler.utils.shell;
 import com.sevtinge.hyperceiler.utils.log.AndroidLogUtils;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -254,4 +255,65 @@ public class ShellUtils {
             this.errorMsg = errorMsg;
         }
     }
+
+    public static String safeExecCommandWithRoot(String cmd) {
+        String result = "";
+        ProcessBuilder pb = new ProcessBuilder("su");
+        Process p = null;
+        DataOutputStream dos = null;
+        DataInputStream dis = null;
+        try {
+            pb.redirectErrorStream(true);
+            p = pb.start();
+            dos = new DataOutputStream(p.getOutputStream());
+            dis = new DataInputStream(p.getInputStream());
+            dos.writeBytes("nsenter --mount=/proc/1/ns/mnt -- " + cmd + "\n");
+            dos.flush();
+            dos.writeBytes("exit\n");
+            dos.flush();
+            String line = null;
+            while ((line = dis.readLine()) != null) {
+                result += line + "\n";
+            }
+            p.waitFor();
+        } catch (Exception e) {
+            if (!cmd.contains("nsenter") && String.valueOf(e).contains("nsenter: exec ")) {
+                return String.valueOf(e).replace("nsenter: exec ", "");
+            } else {
+                return String.valueOf(e);
+            }
+        } finally {
+            if (dos != null) {
+                try {
+                    dos.close();
+                } catch (IOException e) {
+                    if (!cmd.contains("nsenter") && String.valueOf(e).contains("nsenter: exec ")) {
+                        return String.valueOf(e).replace("nsenter: exec ", "");
+                    } else {
+                        return String.valueOf(e);
+                    }
+                }
+            }
+            if (dis != null) {
+                try {
+                    dis.close();
+                } catch (IOException e) {
+                    if (!cmd.contains("nsenter") && String.valueOf(e).contains("nsenter: exec ")) {
+                        return String.valueOf(e).replace("nsenter: exec ", "");
+                    } else {
+                        return String.valueOf(e);
+                    }
+                }
+            }
+        }
+        if (!result.isEmpty()) {
+            result = result.substring(0, result.length() - 1);
+        }
+        if (!cmd.contains("nsenter") && result.contains("nsenter: exec ")) {
+            return result.replace("nsenter: exec ", "");
+        } else {
+            return result;
+        }
+    }
+
 }

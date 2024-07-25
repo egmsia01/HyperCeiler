@@ -24,6 +24,8 @@ import static com.sevtinge.hyperceiler.utils.devicesdk.MiDeviceAppUtilsKt.isPad;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getBaseOs;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getRomAuthor;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.isMoreHyperOSVersion;
+import static com.sevtinge.hyperceiler.utils.log.LogManager.IS_LOGGER_ALIVE;
+import static com.sevtinge.hyperceiler.utils.log.LogManager.LOGGER_CHECKER_ERR_CODE;
 
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
@@ -40,6 +42,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sevtinge.hyperceiler.BuildConfig;
 import com.sevtinge.hyperceiler.R;
 import com.sevtinge.hyperceiler.prefs.PreferenceHeader;
 import com.sevtinge.hyperceiler.prefs.TipsPreference;
@@ -68,7 +71,9 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
     Preference mAod;
     Preference mGuardProvider;
     Preference mHeadtipWarn;
+    Preference mHeadtipNotice;
     Preference mHeadtipBirthday;
+    Preference mHeadtipHyperCeiler;
     Preference mHelpCantSeeApps;
     TipsPreference mTips;
     MainActivityContextHelper mainActivityContextHelper;
@@ -139,7 +144,9 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
         mGuardProvider = findPreference("prefs_key_guardprovider");
         mTips = findPreference("prefs_key_tips");
         mHeadtipWarn = findPreference("prefs_key_headtip_warn");
-        mHeadtipBirthday = findPreference("prefs_key_headtip_hyperceiler");
+        mHeadtipNotice = findPreference("prefs_key_headtip_notice");
+        mHeadtipBirthday = findPreference("prefs_key_headtip_hyperceiler_birthday");
+        mHeadtipHyperCeiler = findPreference("prefs_key_headtip_hyperceiler");
         mHelpCantSeeApps = findPreference("prefs_key_help_cant_see_app");
 
         mHelpCantSeeApps.setVisible(!getSharedPreferences().getBoolean("prefs_key_help_cant_see_apps_switch", false));
@@ -165,7 +172,9 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
         mainActivityContextHelper = new MainActivityContextHelper(requireContext());
 
         isBirthday();
+        isFuckCoolapkSDay();
         isOfficialRom();
+        isLoggerAlive();
         if (!getIsOfficialRom()) isSignPass();
 
         mTips = findPreference("prefs_key_tips");
@@ -176,12 +185,26 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
         int currentMonth = calendar.get(Calendar.MONTH);
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         mHeadtipBirthday.setVisible(currentMonth == Calendar.MAY && currentDay == 1);
+    }
 
+    public void isFuckCoolapkSDay() {
+        Calendar calendar = Calendar.getInstance();
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        mHeadtipHyperCeiler.setVisible(currentMonth == Calendar.JULY && currentDay == 14);
+        mHeadtipHyperCeiler.setTitle(R.string.headtip_tip_fuck_coolapk);
     }
 
     public void isOfficialRom() {
         mHeadtipWarn.setTitle(R.string.headtip_warn_not_offical_rom);
         mHeadtipWarn.setVisible(getIsOfficialRom());
+    }
+
+    public void isLoggerAlive() {
+        if (!IS_LOGGER_ALIVE && BuildConfig.BUILD_TYPE != "release") {
+            mHeadtipNotice.setTitle(R.string.headtip_notice_dead_logger);
+            mHeadtipNotice.setVisible(true);
+        }
     }
 
     public boolean getIsOfficialRom() {
@@ -196,6 +219,7 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
                 Objects.equals(SystemSDKKt.getHost(), "xiaomi.eu") ||
                 (
                         !SystemSDKKt.getHost().startsWith("pangu-build-component-system") &&
+                                !SystemSDKKt.getHost().startsWith("builder-system") &&
                                 !SystemSDKKt.getHost().startsWith("non-pangu-pod") &&
                                 !Objects.equals(SystemSDKKt.getHost(), "xiaomi.com")
                 );

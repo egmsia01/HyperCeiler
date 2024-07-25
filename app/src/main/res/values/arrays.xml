@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ This file is part of HyperCeiler.
+  ~
+  ~ HyperCeiler is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  ~
+  ~ Copyright (C) 2023-2024 HyperCeiler Contributions
+  -->
 <resources>
 
     <string-array name="xposed_scope">
@@ -59,6 +76,7 @@
         <item>com.xiaomi.trustservice</item> <!--trustservice-->
         <item>com.iflytek.inputmethod.miui</item> <!--讯飞输入法小米版-->
         <item>com.sohu.inputmethod.sogou.xiaomi</item> <!--搜狗输入法小米版-->
+        <item>com.miui.voicetrigger</item> <!--语音唤醒-->
         <!--<item>com.hchen.demo</item>--> <!--Demo-->
     </string-array>
 
@@ -487,6 +505,16 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="skip_count_down_limit_type">
+        <item>自动勾选和跳过读秒</item>
+        <item>直接授权</item>
+    </string-array>
+
+    <string-array name="skip_count_down_limit_type_value">
+        <item>0</item>
+        <item>1</item>
     </string-array>
 
     <string-array name="dialog_gravity">

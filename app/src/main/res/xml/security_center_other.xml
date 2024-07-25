@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ This file is part of HyperCeiler.
+  ~
+  ~ HyperCeiler is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  ~
+  ~ Copyright (C) 2023-2024 HyperCeiler Contributions
+  -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:myLocation="@string/security_center_other_title">
@@ -70,6 +87,14 @@
             android:key="prefs_key_security_center_skip_count_down_limit"
             android:summary="@string/security_center_skip_waiting_time_desc"
             android:title="@string/security_center_skip_waiting_time"
+            app:isPreferenceVisible="true" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="prefs_key_security_center_skip_count_down_limit"
+            android:key="prefs_key_security_center_skip_count_down_limit_direct"
+            android:summary="@string/security_center_skip_waiting_time_direct_desc"
+            android:title="@string/security_center_skip_waiting_time_direct"
             app:isPreferenceVisible="true" />
 
         <SwitchPreference

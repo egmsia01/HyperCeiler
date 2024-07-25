@@ -20,6 +20,9 @@ package com.sevtinge.hyperceiler.ui;
 
 import static com.sevtinge.hyperceiler.utils.devicesdk.MiDeviceAppUtilsKt.isPad;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.isMoreHyperOSVersion;
+import static com.sevtinge.hyperceiler.utils.log.LogManager.IS_LOGGER_ALIVE;
+import static com.sevtinge.hyperceiler.utils.log.LogManager.LOGGER_CHECKER_ERR_CODE;
+import static com.sevtinge.hyperceiler.utils.log.LogManager.isLoggerAlive;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,11 +32,11 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
+import com.sevtinge.hyperceiler.BuildConfig;
 import com.sevtinge.hyperceiler.R;
 import com.sevtinge.hyperceiler.callback.IResult;
 import com.sevtinge.hyperceiler.prefs.PreferenceHeader;
 import com.sevtinge.hyperceiler.safe.CrashData;
-import com.sevtinge.hyperceiler.safe.CrashService;
 import com.sevtinge.hyperceiler.ui.base.NavigationActivity;
 import com.sevtinge.hyperceiler.utils.BackupUtils;
 import com.sevtinge.hyperceiler.utils.Helpers;
@@ -59,6 +62,7 @@ public class MainActivity extends NavigationActivity implements IResult {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        IS_LOGGER_ALIVE = isLoggerAlive();
         SharedPreferences mPrefs = PrefsUtils.mSharedPreferences;
         int count = Integer.parseInt(mPrefs.getString("prefs_key_settings_app_language", "-1"));
         if (count != -1) {
@@ -70,6 +74,15 @@ public class MainActivity extends NavigationActivity implements IResult {
         super.onCreate(savedInstanceState);
         new Thread(() -> SearchHelper.getAllMods(MainActivity.this, savedInstanceState != null)).start();
         Helpers.checkXposedActivateState(this);
+        if (!IS_LOGGER_ALIVE && BuildConfig.BUILD_TYPE != "release") {
+            handler.post(() -> new AlertDialog.Builder(context)
+                    .setCancelable(false)
+                    .setTitle(getResources().getString(R.string.warn))
+                    .setMessage(getResources().getString(R.string.headtip_notice_dead_logger_errcode, LOGGER_CHECKER_ERR_CODE))
+                    .setHapticFeedbackEnabled(true)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show());
+        }
         ShellInit.init(this);
         PropUtils.setProp("persist.hyperceiler.log.level", ProjectApi.isCanary() ? (def != 3 && def != 4 ? 3 : def) : def);
         appCrash = CrashData.toPkgList();
@@ -124,6 +137,7 @@ public class MainActivity extends NavigationActivity implements IResult {
                 .setPositiveButton(android.R.string.ok, null)
                 .show());
     }
+
 
     private boolean haveCrashReport() {
         return !appCrash.isEmpty();
