@@ -560,6 +560,10 @@
     <string name="camera_settings_lab_options">启用实验室选项</string>
     <string name="camera_settings_track_eyes">解锁人眼追焦</string>
     <string name="camera_max_brightness">使用相机时使屏幕亮度最大</string>
+    <string name="camera_black_leica">黑底徕卡水印</string>
+    <string name="camera_black_leica_desc">在使用徕卡水印时，将主题色更改为黑色，部分设备暂不支持</string>
+    <string name="camera_custom_theme_color">自定义主题色</string>
+    <string name="camera_custom_theme_color_picker">选择主题色</string>
     <!--日历-->
     <string name="calendar">日历</string>
     <string name="calendar_unlock_subscription">解锁订阅服务</string>
@@ -567,6 +571,7 @@
     <string name="fileexplorer">文件管理</string>
     <string name="file_explorer_can_selectable">文件夹名称允许长按选择操作</string>
     <string name="file_explorer_is_single_line">文件夹名称以单行显示</string>
+    <string name="file_explorer_unlock_file_parse">解锁超级文档</string>
     <!--电话-->
     <string name="incallui">电话</string>
     <string name="incallui_hide_crbt">隐藏电话彩铃</string>
@@ -800,6 +805,7 @@
     <string name="system_ui_statusbar_battery_disable">隐藏单位</string>
     <string name="system_ui_statusbar_battery_right_show">右侧显示</string>
     <string name="system_ui_statusbar_battery_electric_current">电流总显示正值</string>
+    <string name="system_ui_statusbar_battery_power_abs">功率总显示正值</string>
     <string name="system_ui_statusbar_battery_line_show">单排显示</string>
     <string name="system_ui_statusbar_battery_opposite">反序</string>
     <string name="system_ui_statusbar_battery_only_changing_show">仅在充电时显示</string>
@@ -1438,6 +1444,7 @@
     <string name="personal_assistant_unlock_widget_count_limit">解除小部件数量限制</string>
     <string name="personal_assistant_set_tv_notif_info_max_width">行程提示状态栏焦点通知最大宽度</string>
     <string name="personal_assistant_set_tv_notif_info_max_width_desc">适当上调该值以解决显示内容被省略</string>
+    <string name="personal_assistant_disable_lite_version">禁止使用精简版</string>
     <!--电量与性能-->
     <string name="powerkeeper">电量与性能</string>
     <string name="powerkeeper_custom_refresh_rate">自定义高刷新率应用</string>
@@ -1573,6 +1580,8 @@
     <string name="security_center_aosp_app_manager">添加 \"原生应用管理\" 入口</string>
     <string name="security_center_aosp_app_manager_label">原生应用管理</string>
     <string name="security_center_power_consumption_ranking">恢复显示耗电排行</string>
+    <string name="security_center_hide_xopt_mode_tip">隐藏权限使用提示</string>
+    <string name="security_center_battery_unlock_low_temp_ext_endurance">解锁低温超级续航</string>
     <!--MiTrustService-->
     <string name="trustservice">MiTrustService</string>
     <string name="trustservice_disable_mrm">禁用风险检测</string>

@@ -21,6 +21,18 @@
     app:myLocation="@string/camera">
 
     <SwitchPreference
+        android:defaultValue="false"
+        android:key="prefs_key_camera_custom_theme_color"
+        android:title="@string/camera_custom_theme_color" />
+
+    <ColorPickerPreference
+        android:defaultValue="-12778"
+        android:dependency="prefs_key_camera_custom_theme_color"
+        android:key="prefs_key_camera_custom_theme_color_picker"
+        android:title="@string/camera_custom_theme_color_picker"
+        app:showAlphaSlider="false" />
+
+    <SwitchPreference
         android:title="@string/camera_max_brightness"
         android:key="prefs_key_camera_max_brightness"
         android:defaultValue="false" />
@@ -58,6 +70,12 @@
             android:key="prefs_key_camera_custom_watermark_device"
             android:defaultValue=""
             android:dependency="prefs_key_camera_custom_watermark"/>
+
+        <SwitchPreference
+            android:title="@string/camera_black_leica"
+            android:summary="@string/camera_black_leica_desc"
+            android:key="prefs_key_camera_black_leica"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 

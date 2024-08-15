@@ -16,9 +16,8 @@
  *
  * Copyright (C) 2023-2024 HyperCeiler Contributions
  */
-package com.sevtinge.hyperceiler.module.hook.packageinstaller;
 
-import static de.robv.android.xposed.XposedHelpers.setStaticBooleanField;
+package com.sevtinge.hyperceiler.module.hook.camera;
 
 import com.sevtinge.hyperceiler.module.base.BaseHook;
 import com.sevtinge.hyperceiler.module.base.dexkit.DexKit;
@@ -38,40 +37,39 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public class DisableInstallerFullSafeVersion extends BaseHook {
+import de.robv.android.xposed.XposedHelpers;
+
+public class CustomCameraColor extends BaseHook {
     @Override
     public void init() throws NoSuchMethodException {
-        Method method = (Method) DexKit.getDexKitBridge("IsFullSafeVersion", new IDexKit() {
+        Method method = (Method) DexKit.getDexKitBridge("CameraColorGetter", new IDexKit() {
             @Override
             public AnnotatedElement dexkit(DexKitBridge bridge) throws ReflectiveOperationException {
                 MethodData methodData = bridge.findMethod(FindMethod.create()
                         .matcher(MethodMatcher.create()
-                                .usingStrings("installer_full_safe_version")
-                                .returnType(boolean.class)
+                                .addCaller(MethodMatcher.create().declaredClass("com.android.camera.fragment.FragmentMasterFilter"))
+                                .addCaller(MethodMatcher.create().declaredClass("com.android.camera.customization.BGTintTextView"))
+                                .addCaller(MethodMatcher.create().declaredClass("com.android.camera.fragment.FragmentBottomPopupTips"))
+                                .addCaller(MethodMatcher.create().declaredClass("com.android.camera.fragment.aiwatermark.holder.WatermarkHolder"))
+                                .addCaller(MethodMatcher.create().declaredClass("com.android.camera2.compat.theme.common.MiThemeOperationBottom"))
+                                .modifiers(Modifier.STATIC)
+                                .returnType(int.class)
+                                .paramCount(0)
                         )).singleOrNull();
                 return methodData.getMethodInstance(lpparam.classLoader);
             }
         });
-        hookMethod(method, new MethodHook() {
-            @Override
-            protected void before(MethodHookParam param) throws Throwable {
-                param.setResult(false);
-            }
-        });
-        Field field = (Field) DexKit.getDexKitBridge("FullSecurityProtectVersion", new IDexKit() {
+        Field field = (Field) DexKit.getDexKitBridge("CameraColor", new IDexKit() {
             @Override
             public AnnotatedElement dexkit(DexKitBridge bridge) throws ReflectiveOperationException {
                 FieldData fieldData = bridge.findField(FindField.create()
                         .matcher(FieldMatcher.create()
-                                .declaredClass(ClassMatcher.create()
-                                        .usingStrings("FullSafeHelper")
-                                )
-                                .type(boolean.class)
-                                .modifiers(Modifier.FINAL)
+                                .declaredClass(method.getDeclaringClass())
+                                .type(int.class)
                         )).singleOrNull();
                 return fieldData.getFieldInstance(lpparam.classLoader);
             }
         });
-        setStaticBooleanField(field.getDeclaringClass(), field.getName(), false);
+        XposedHelpers.setStaticIntField(field.getDeclaringClass(), field.getName(), mPrefsMap.getInt("camera_custom_theme_color_picker", -2024677));
     }
 }
