@@ -625,6 +625,9 @@
     <string name="system_ui_lock_screen_allow_third_face">允许三方锁屏界面唤醒系统验证识别</string>
     <string name="system_ui_lock_screen_allow_third_face_desc">允许在第三方应用显示的锁屏界面时，正常使用人脸及指纹识别</string>
     <string name="system_ui_lock_screen_disable_unlock_by_ble_toast">禁止显示 \"已通过蓝牙设备解锁\" Toast</string>
+    <string name="system_ui_lock_screen_linkage_anim">覆盖联动息屏壁纸动画参数</string>
+    <string name="system_ui_lock_screen_linkage_anim_on">亮屏动画速率</string>
+    <string name="system_ui_lock_screen_linkage_anim_off">息屏动画速率</string>
 
     <string name="system_ui_navigation_title">导航栏</string>
     <string name="system_ui_navigation_handle_title">手势提示线</string>
@@ -1582,6 +1585,7 @@
     <string name="security_center_power_consumption_ranking">恢复显示耗电排行</string>
     <string name="security_center_hide_xopt_mode_tip">隐藏权限使用提示</string>
     <string name="security_center_battery_unlock_low_temp_ext_endurance">解锁低温超级续航</string>
+    <string name="secutity_center_unlock_app_sandbox">解锁应用存储沙盒</string>
     <!--MiTrustService-->
     <string name="trustservice">MiTrustService</string>
     <string name="trustservice_disable_mrm">禁用风险检测</string>
@@ -1627,6 +1631,7 @@
     <string name="market_package_monitor_desc">应用商店后台时监控应用安装与删除</string>
     <string name="market_package_monitor">禁止监控应用安装和删除</string>
     <string name="market_disable_ads">禁用推广</string>
+    <string name="market_bypass_risk_check">强制应用安全检测为优秀</string>
     <!--音质音效-->
     <string name="misound">音质音效</string>
     <string name="misound_bluetooth">耳机状态自动切换原声</string>

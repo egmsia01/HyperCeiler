@@ -616,6 +616,9 @@
     <string name="system_ui_lock_screen_allow_third_face">Allow system to verify third-party recognition</string>
     <string name="system_ui_lock_screen_allow_third_face_desc">Allows facial recognition and fingerprint to be used normally on the Lock screen displayed by third-party apps</string>
     <string name="system_ui_lock_screen_disable_unlock_by_ble_toast">Disable show unlock by Bluetooth toast</string>
+    <string name="system_ui_lock_screen_linkage_anim">Override Linkage Wallpaper Anim</string>
+    <string name="system_ui_lock_screen_linkage_anim_on">Screen on animation rate</string>
+    <string name="system_ui_lock_screen_linkage_anim_off">Screen off animation rate</string>
     <string name="system_ui_navigation_title">Navigation</string>
     <string name="system_ui_navigation_handle_title">Handle line</string>
     <string name="system_ui_hide_navigation_bar">Hide navigation bar</string>
@@ -1550,6 +1553,7 @@
     <string name="security_center_power_consumption_ranking">Show power consumption ranking</string>
     <string name="security_center_hide_xopt_mode_tip">Hide tip for hidden permission usage</string>
     <string name="security_center_battery_unlock_low_temp_ext_endurance">Unlock Cold endurance mode</string>
+    <string name="secutity_center_unlock_app_sandbox">Unlock Independent storage</string>
     <!--MiTrustService-->
     <string name="trustservice">MiTrustService</string>
     <string name="trustservice_disable_mrm">Disable risk detections</string>
@@ -1595,6 +1599,7 @@
     <string name="market_package_monitor">Disable package monitor</string>
     <string name="market_package_monitor_desc">Prohibit GetApps from monitoring app installation and uninstallation</string>
     <string name="market_disable_ads">Disable ads</string>
+    <string name="market_bypass_risk_check">Bypass risk check</string>
     <!--Mi sound-->
     <string name="misound">Earphones</string>
     <string name="misound_bluetooth">Change headphone status to the original sound</string>
