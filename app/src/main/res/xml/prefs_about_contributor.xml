@@ -279,11 +279,11 @@
                 android:data="https://github.com/xzakota" />
         </Preference>
         <Preference
-            android:summary="GitHub@YuKongA"
-            android:title="YuKongA">
+            android:summary="GitHub@YifePlayte"
+            android:title="Yife Playte">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/YuKongA" />
+                android:data="https://github.com/YifePlayte" />
         </Preference>
         <Preference
             android:summary="GitHub@zcarroll4"
@@ -347,6 +347,13 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://github.com/zjw2017" />
+        </Preference>
+        <Preference
+            android:summary="GitHub@YuKongA"
+            android:title="余空">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/YuKongA" />
         </Preference>
         <Preference
             android:summary="GitHub@pomelohan"

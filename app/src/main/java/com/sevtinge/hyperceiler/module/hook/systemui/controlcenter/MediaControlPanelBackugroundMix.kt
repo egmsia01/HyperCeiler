@@ -71,39 +71,11 @@ class MediaControlPanelBackgroundMix : BaseHook() {
         val seekBarObserver = loadClassOrNull("com.android.systemui.media.controls.models.player.SeekBarObserver")
         val mediaViewHolder = loadClassOrNull("com.android.systemui.media.controls.models.player.MediaViewHolder")
         val statusBarStateControllerImpl = loadClassOrNull("com.android.systemui.statusbar.StatusBarStateControllerImpl")
-
-        mediaViewHolder?.constructors?.first()?.createAfterHook {
-            val context = AndroidAppHelper.currentApplication().applicationContext
-            val action0 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action0")
-            val action1 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action1")
-            val action2 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action2")
-            val action3 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action3")
-            val action4 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action4")
-
-            fun updateColorFilter() {
-                val color = if (isDarkMode()) Color.WHITE else Color.BLACK
-                action0?.setColorFilter(color)
-                action1?.setColorFilter(color)
-                action2?.setColorFilter(color)
-                action3?.setColorFilter(color)
-                action4?.setColorFilter(color)
-            }
-
-            updateColorFilter()
-
-            val darkModeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
-                override fun onChange(selfChange: Boolean) {
-                    updateColorFilter()
-                }
-            }
-
-            context.contentResolver.registerContentObserver(
-                Settings.Secure.getUriFor("ui_night_mode"), false, darkModeObserver
-            )
-        }
+        val miuiStubClass = loadClassOrNull("miui.stub.MiuiStub")
+        val miuiStubInstance = XposedHelpers.getStaticObjectField(miuiStubClass, "INSTANCE")
 
         if (mPrefsMap.getBoolean("system_ui_control_center_remove_media_control_panel_background")) {
-            removeBackground(notificationUtil, miuiMediaControlPanel, playerTwoCircleView, seekBarObserver, statusBarStateControllerImpl)
+            removeBackground(notificationUtil, miuiMediaControlPanel, playerTwoCircleView, seekBarObserver, statusBarStateControllerImpl, mediaViewHolder, miuiStubInstance)
         } else {
             setBlurBackground(miuiMediaControlPanel, playerTwoCircleView)
         }
@@ -115,7 +87,9 @@ class MediaControlPanelBackgroundMix : BaseHook() {
         miuiMediaControlPanel: Class<*>?,
         playerTwoCircleView: Class<*>?,
         seekBarObserver: Class<*>?,
-        statusBarStateControllerImpl: Class<*>?
+        statusBarStateControllerImpl: Class<*>?,
+        mediaViewHolder: Class<*>?,
+        miuiStubInstance: Any
     ) {
         try {
             var lockScreenStatus: Boolean? = null
@@ -142,6 +116,36 @@ class MediaControlPanelBackgroundMix : BaseHook() {
                     progressDrawable = layerDrawable
                 }
             }*/
+
+            mediaViewHolder?.constructors?.first()?.createAfterHook {
+                val context = AndroidAppHelper.currentApplication().applicationContext
+                val action0 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action0")
+                val action1 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action1")
+                val action2 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action2")
+                val action3 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action3")
+                val action4 = it.thisObject.objectHelper().getObjectOrNullAs<ImageButton>("action4")
+
+                fun updateColorFilter() {
+                    val color = if (isDarkMode()) Color.WHITE else Color.BLACK
+                    action0?.setColorFilter(color)
+                    action1?.setColorFilter(color)
+                    action2?.setColorFilter(color)
+                    action3?.setColorFilter(color)
+                    action4?.setColorFilter(color)
+                }
+
+                updateColorFilter()
+
+                val darkModeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+                    override fun onChange(selfChange: Boolean) {
+                        updateColorFilter()
+                    }
+                }
+
+                context.contentResolver.registerContentObserver(
+                    Settings.Secure.getUriFor("ui_night_mode"), false, darkModeObserver
+                )
+            }
 
             miuiMediaControlPanel?.methodFinder()?.filterByName("bindPlayer")?.first()
                 ?.createAfterHook {
@@ -178,19 +182,24 @@ class MediaControlPanelBackgroundMix : BaseHook() {
                     val canvas = Canvas(artworkBitmap)
                     artworkLayer.setBounds(0, 0, artworkLayer.intrinsicWidth, artworkLayer.intrinsicHeight)
                     artworkLayer.draw(canvas)
-                    val resizedBitmap = Bitmap.createScaledBitmap(artworkBitmap, 300, 300, true)
+                    val minDimen = Math.min(artworkBitmap.width, artworkBitmap.height)
+                    val left = (artworkBitmap.width - minDimen) / 2
+                    val top = (artworkBitmap.height - minDimen) / 2
+                    val rect = Rect(left, top, left + minDimen, top + minDimen)
+                    val croppedBitmap = Bitmap.createBitmap(minDimen, minDimen, Bitmap.Config.ARGB_8888)
+                    val canvasCropped = Canvas(croppedBitmap)
+                    canvasCropped.drawBitmap(artworkBitmap, rect, Rect(0, 0, minDimen, minDimen), null)
                     val radius = 45f
-                    val newBitmap = Bitmap.createBitmap(resizedBitmap.width, resizedBitmap.height, Bitmap.Config.ARGB_8888)
+                    val newBitmap = Bitmap.createBitmap(croppedBitmap.width, croppedBitmap.height, Bitmap.Config.ARGB_8888)
                     val canvas1 = Canvas(newBitmap)
                     val paint = Paint()
-                    val rect = Rect(0, 0, resizedBitmap.width, resizedBitmap.height)
-                    val rectF = RectF(rect)
+                    val rectF = RectF(0f, 0f, croppedBitmap.width.toFloat(), croppedBitmap.height.toFloat())
                     paint.isAntiAlias = true
                     canvas1.drawARGB(0, 0, 0, 0)
                     paint.color = Color.BLACK
                     canvas1.drawRoundRect(rectF, radius, radius, paint)
                     paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-                    canvas1.drawBitmap(resizedBitmap, rect, rect, paint)
+                    canvas1.drawBitmap(croppedBitmap, 0f, 0f, paint)
                     albumView?.setImageDrawable(BitmapDrawable(context.resources, newBitmap))
                     (appIcon?.parent as ViewGroup?)?.removeView(appIcon)
 
@@ -202,16 +211,17 @@ class MediaControlPanelBackgroundMix : BaseHook() {
                     if (!isBackgroundBlurOpened) {
                         titleText?.setTextColor(Color.WHITE)
                         seamlessIcon?.setColorFilter(Color.WHITE)
-                        seekBar?.progressDrawable?.colorFilter = colorFilter(Color.WHITE)
-                        seekBar?.thumb?.colorFilter = colorFilter(Color.WHITE)
+                        seekBar?.progressDrawable?.colorFilter = colorFilter(grey)
+                        seekBar?.thumb?.colorFilter = colorFilter(if (mPrefsMap.getStringAsInt("system_ui_control_center_media_control_progress_mode", 0) == 2) Color.TRANSPARENT else grey)
                     } else {
                         artistText?.setTextColor(grey)
                         elapsedTimeView?.setTextColor(grey)
                         totalTimeView?.setTextColor(grey)
-                        titleText?.setTextColor(Color.WHITE)
-                        seamlessIcon?.setColorFilter(Color.WHITE)
-                        seekBar?.progressDrawable?.colorFilter = colorFilter(Color.WHITE)
-                        seekBar?.thumb?.colorFilter = colorFilter(if (mPrefsMap.getStringAsInt("system_ui_control_center_media_control_progress_mode", 0) == 2) Color.TRANSPARENT else Color.WHITE)
+                        titleText?.setTextColor(grey)
+                        titleText?.setTextColor(color)
+                        seamlessIcon?.setColorFilter(color)
+                        seekBar?.progressDrawable?.colorFilter = colorFilter(grey)
+                        seekBar?.thumb?.colorFilter = colorFilter(if (mPrefsMap.getStringAsInt("system_ui_control_center_media_control_progress_mode", 0) == 2) Color.TRANSPARENT else grey)
                         /*if (!isDarkMode()) {
                             titleText?.setTextColor(Color.BLACK)
                             artistText?.setTextColor(grey)
@@ -312,8 +322,6 @@ class MediaControlPanelBackgroundMix : BaseHook() {
                         getNotificationElementRoundRect(context)
                     )
 
-                    val miuiStubClass = loadClassOrNull("miui.stub.MiuiStub")
-                    val miuiStubInstance = XposedHelpers.getStaticObjectField(miuiStubClass, "INSTANCE")
                     val mSysUIProvider = XposedHelpers.getObjectField(miuiStubInstance, "mSysUIProvider")
                     val mStatusBarStateController = XposedHelpers.getObjectField(mSysUIProvider, "mStatusBarStateController")
                     val getLazyClass = XposedHelpers.callMethod(mStatusBarStateController, "get")

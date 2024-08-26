@@ -120,8 +120,8 @@ public class DevelopmentDebugInfoFragment extends SettingsPreferenceFragment {
             propertiesSystem.put("HyperOsVersion", String.valueOf(getHyperOSVersion()));
             propertiesSystem.put("SystemVersion", getSystemVersionIncremental());
             propertiesSystem.put("InternationalBuild", String.valueOf(isInternational()));
-            propertiesSystem.put("Builder", getBuilder());
-            propertiesSystem.put("RomAuthor", getRomAuthor());
+            // propertiesSystem.put("Builder", getBuilder());
+            // propertiesSystem.put("RomAuthor", getRomAuthor());
             propertiesSystem.put("BaseOs", com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getBaseOs());
             propertiesSystem.put("Host", com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getHost());
             propertiesSystem.put("BuildDate", getBuildDate());
@@ -131,7 +131,7 @@ public class DevelopmentDebugInfoFragment extends SettingsPreferenceFragment {
             propertiesCheck.put("Signature", SignUtils.getSHA256Signature(requireContext()));
             propertiesCheck.put("SignCheckPass", String.valueOf(SignUtils.isSignCheckPass(requireContext())));
             propertiesCheck.put("ModuleActive", String.valueOf(isModuleActive));
-            propertiesCheck.put("RootPermission", String.valueOf(ShellInit.ready()));
+            // propertiesCheck.put("RootPermission", String.valueOf(ShellInit.ready()));
             propertiesCheck.put("WhoAmI", getWhoAmI());
             propertiesCheck.put("LoggerStatus", IS_LOGGER_ALIVE + ", " + LOGGER_CHECKER_ERR_CODE);
         } catch (Exception ignored) {

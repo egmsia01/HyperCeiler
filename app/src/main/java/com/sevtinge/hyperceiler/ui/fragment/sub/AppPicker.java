@@ -44,11 +44,13 @@ import com.sevtinge.hyperceiler.utils.BitmapUtils;
 import com.sevtinge.hyperceiler.utils.PackagesUtils;
 import com.sevtinge.hyperceiler.utils.prefs.PrefsUtils;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import moralnorm.appcompat.app.AlertDialog;
@@ -183,9 +185,26 @@ public class AppPicker extends Fragment {
                     @Override
                     public void run() {
                         appDataList = getAppInfo();
+
+                        Collator collator = Collator.getInstance(Locale.getDefault());
+                        appDataList.sort((app1, app2) -> collator.compare(app1.label, app2.label));
+
+                        AppData tagApp = null;
+                        for (AppData app : appDataList) {
+                            if ("com.android.apps.tag".equals(app.packageName)) {
+                                tagApp = app;
+                                break;
+                            }
+                        }
+                        if (tagApp != null) {
+                            appDataList.remove(tagApp);
+                            appDataList.add(0, tagApp);
+                        }
+
                         mAppListAdapter = new AppDataAdapter(requireActivity(),
                                 R.layout.item_app_list, appDataList, key, modeSelection);
                         mAppListRv.setAdapter(mAppListAdapter);
+
                         mAmProgress.setVisibility(View.GONE);
                         mAppListRv.setVisibility(View.VISIBLE);
                     }
@@ -200,24 +219,13 @@ public class AppPicker extends Fragment {
                     PackagesUtils.getPackagesByCode(new PackagesUtils.IPackageCode() {
                         @Override
                         public List<Parcelable> getPackageCodeList(PackageManager pm) {
+
                             Intent intent = new Intent(Intent.ACTION_MAIN);
                             intent.addCategory(Intent.CATEGORY_LAUNCHER);
                             List<ResolveInfo> resolveInfoList = new ArrayList<>();
                             List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, PackageManager.GET_ACTIVITIES);
                             List<ResolveInfo> resolveInfosHaveNoLauncher = pm.queryIntentActivities(new Intent(Intent.ACTION_MAIN), PackageManager.GET_ACTIVITIES);
-                            if (resolveInfosHaveNoLauncher.size() > resolveInfos.size()) {
-                                Iterator<ResolveInfo> iterator = resolveInfosHaveNoLauncher.iterator();
-                                while (iterator.hasNext()) {
-                                    ResolveInfo info = iterator.next();
-                                    if (resolveInfos.contains(info)) {
-                                        continue;
-                                    } else {
-                                        if (PackagesUtils.isSystem(info.activityInfo.applicationInfo)) {
-                                            iterator.remove();
-                                        }
-                                    }
-                                }
-                            }
+
                             hashMap.clear();
                             for (ResolveInfo resolveInfo : resolveInfosHaveNoLauncher) {
                                 Integer added = hashMap.get(resolveInfo.activityInfo.applicationInfo.packageName);
@@ -228,6 +236,14 @@ public class AppPicker extends Fragment {
                                 }
                                 resolveInfoList.add(resolveInfo);
                             }
+
+                            Collator collator = Collator.getInstance(Locale.getDefault());
+                            resolveInfoList.sort((r1, r2) -> {
+                                CharSequence label1 = r1.loadLabel(pm);
+                                CharSequence label2 = r2.loadLabel(pm);
+                                return collator.compare(label1.toString(), label2.toString());
+                            });
+
                             return new ArrayList<>(resolveInfoList);
                         }
                     });
