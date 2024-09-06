@@ -63,32 +63,40 @@ public class LogManager {
 
     public static boolean isLoggerAlive() {
         try {
-            String output = safeExecCommandWithRoot("ls /data/adb/lspd/log/");
-            String[] lines = output.split("\n");
-            List<String> logFiles = new ArrayList<>();
-            for (String line : lines) {
-                if (line.startsWith("modules_") && line.endsWith(".log")) {
-                    logFiles.add(line);
+            String modulesOutput = safeExecCommandWithRoot("ls /data/adb/modules/");
+            String[] moduleLines = modulesOutput.split("\n");
+            boolean lsposedFound = false;
+            for (String line : moduleLines) {
+                if (line.toLowerCase().contains("lsposed")) {
+                    lsposedFound = true;
+                    break;
                 }
             }
-
-            if (logFiles.size() == 1) {
-                String fileName = logFiles.get(0);
-                String filePath = "/data/adb/lspd/log/" + fileName;
-                String firstLine = safeExecCommandWithRoot("head -n 1 " + filePath).trim();
-                if (firstLine.equals("----part 1 start----")) {
-                    String grepOutput = safeExecCommandWithRoot("grep -q 'LSPosed-Bridge' " + filePath + " && echo 'FOUND' || echo 'EMPTY'");
-                    if (!grepOutput.trim().equals("FOUND")) {
-                        LOGGER_CHECKER_ERR_CODE = "EMPTY_XPOSED_LOG_FILE";
-                        return false;
+            if (lsposedFound) {
+                String output = safeExecCommandWithRoot("ls /data/adb/lspd/log/");
+                String[] lines = output.split("\n");
+                List<String> logFiles = new ArrayList<>();
+                for (String line : lines) {
+                    if (line.startsWith("modules_") && line.endsWith(".log")) {
+                        logFiles.add(line);
                     }
-                } else if (firstLine.equals("")) {
-                    LOGGER_CHECKER_ERR_CODE = "EMPTY_XPOSED_LOG_FILE";
+                }
+
+                if (logFiles.size() == 1) {
+                    String fileName = logFiles.get(0);
+                    String filePath = "/data/adb/lspd/log/" + fileName;
+                    String grepOutput = safeExecCommandWithRoot("grep -q 'HyperCeiler' " + filePath + " && echo 'FOUND' || echo 'EMPTY'");
+                    if (grepOutput.trim().equals("EMPTY")) {
+                        grepOutput = safeExecCommandWithRoot("grep -q 'hyperceiler' " + filePath + " && echo 'FOUND' || echo 'EMPTY'");
+                        if (grepOutput.trim().equals("EMPTY")) {
+                            LOGGER_CHECKER_ERR_CODE = "EMPTY_XPOSED_LOG_FILE";
+                            return false;
+                        }
+                    }
+                } else if (logFiles.isEmpty()) {
+                    LOGGER_CHECKER_ERR_CODE = "NO_XPOSED_LOG_FILE";
                     return false;
                 }
-            } else if (logFiles.isEmpty()) {
-                LOGGER_CHECKER_ERR_CODE = "NO_XPOSED_LOG_FILE";
-                return false;
             }
         } catch (Exception e) {
             LOGGER_CHECKER_ERR_CODE = String.valueOf(e);
@@ -131,5 +139,15 @@ public class LogManager {
 
         LOGGER_CHECKER_ERR_CODE = "WITHOUT_CODE";
         return false;
+    }
+
+    public static String fixLsposedLogService() {
+        try {
+            safeExecCommandWithRoot("resetprop -n persist.log.tag.LSPosed V");
+            safeExecCommandWithRoot("resetprop -n persist.log.tag.LSPosed-Bridge V");
+            return "SUCCESS";
+        } catch (Exception e) {
+            return e.toString();
+        }
     }
 }

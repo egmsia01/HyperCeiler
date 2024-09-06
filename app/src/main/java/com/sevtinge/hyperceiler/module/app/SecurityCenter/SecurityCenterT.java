@@ -23,6 +23,7 @@ import android.os.Build;
 import com.sevtinge.hyperceiler.module.base.BaseModule;
 import com.sevtinge.hyperceiler.module.base.HookExpand;
 import com.sevtinge.hyperceiler.module.hook.securitycenter.AppLockPinScramble;
+import com.sevtinge.hyperceiler.module.hook.securitycenter.BypassAdbInstallVerify;
 import com.sevtinge.hyperceiler.module.hook.securitycenter.DisableReport;
 import com.sevtinge.hyperceiler.module.hook.securitycenter.GetBubbleAppString;
 import com.sevtinge.hyperceiler.module.hook.securitycenter.HideXOptModeTip;
@@ -73,7 +74,7 @@ import com.sevtinge.hyperceiler.module.hook.securitycenter.sidebar.video.UnlockV
 import com.sevtinge.hyperceiler.module.hook.securitycenter.sidebar.video.VBVideoMode;
 import com.sevtinge.hyperceiler.module.hook.securitycenter.sidebar.video.VideoDolbyOpen;
 
-@HookExpand(pkg = "com.miui.securitycenter", isPad = false, tarAndroid = 33)
+@HookExpand(pkg = "com.miui.securitycenter", tarAndroid = 33, maxAndroid = 34)
 public class SecurityCenterT extends BaseModule {
 
     @Override
@@ -124,6 +125,7 @@ public class SecurityCenterT extends BaseModule {
         initHook(NoLowBatteryWarning.INSTANCE, mPrefsMap.getBoolean("security_center_remove_low_battery_reminder"));
         initHook(new UnlockFbo(), mPrefsMap.getBoolean("security_center_unlock_fbo"));
         initHook(BypassSimLockMiAccountAuth.INSTANCE, mPrefsMap.getBoolean("security_center_bypass_simlock_miaccount_auth"));
+        initHook(new BypassAdbInstallVerify(), mPrefsMap.getBoolean("security_center_adb_install_verify"));
 
         // 小窗和气泡通知
         initHook(new RemoveConversationBubbleSettingsRestriction(), mPrefsMap.getBoolean("security_center_remove_conversation_bubble_settings_restriction"));

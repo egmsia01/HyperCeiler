@@ -82,6 +82,8 @@
     <string name="prefs_5">Select type</string>
     <string name="prefs_6">Check sharing preferences</string>
     <string name="prefs_7">Remove specified key</string>
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
     <string name="help">Help</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
@@ -101,6 +103,8 @@
     <string name="development_prefs">Share preference</string>
     <string name="development_cmd_r">CMD with root</string>
     <string name="development_delete_all_dexkit_cache">Delete all DexKit cache</string>
+    <string name="development_close_log_alert_dialog">Disable logger live alert dialog</string>
+    <string name="development_fix_lsposed_log">Try to fix LSPosed log service</string>
     <string name="about_privacy">Privacy Policy</string>
     <string name="about_protocol">User Agreement</string>
     <string name="settings_show_title">Show</string>
@@ -233,6 +237,7 @@
     <string name="floating_window">Freeform</string>
     <string name="save_to_screen_title">Specification save location</string>
     <string name="only_new_version_can_do">Only newer versions supported</string>
+    <string name="use_hyper_blur">Use Advanced textures</string>
     <string name="system_ui_statusbar_indicator_default_title">Default</string>
     <string name="system_ui_statusbar_indicator_expand_title">Expand</string>
     <string name="system_ui_statusbar_indicator_fixedcontent_width">Fix content width</string>
@@ -605,7 +610,9 @@
     <string name="system_ui_lock_screen_hide_smart_screen">Hide smart screen</string>
     <string name="system_ui_lock_screen_current">Current</string>
     <string name="system_ui_lock_screen_show_second">Show clock seconds</string>
-    <string name="system_ui_lock_screen_blur_button">Blur camera and smart screen button</string>
+    <string name="system_ui_lock_screen_blur_button">Blur Lock screen buttons</string>
+    <string name="system_ui_lock_screen_blur_button_desc">After enabling, the background of the camera and negative screen button on the Lock screen is blurred, which may cause high power consumption.\nSupport default theme only.</string>
+    <string name="system_ui_lock_screen_blur_button_radius">Background radius</string>
     <string name="system_ui_lock_screen_force_system_fonts">Force clock to use system fonts</string>
     <string name="system_ui_lock_screen_double_lock">Double-tap the Lock screen</string>
     <string name="system_ui_lock_screen_double_lock_desc">Double-tap an empty location to lock the screen</string>
@@ -616,7 +623,7 @@
     <string name="system_ui_lock_screen_allow_third_face">Allow system to verify third-party recognition</string>
     <string name="system_ui_lock_screen_allow_third_face_desc">Allows facial recognition and fingerprint to be used normally on the Lock screen displayed by third-party apps</string>
     <string name="system_ui_lock_screen_disable_unlock_by_ble_toast">Disable show unlock by Bluetooth toast</string>
-    <string name="system_ui_lock_screen_linkage_anim">Override Linkage Wallpaper Anim</string>
+    <string name="system_ui_lock_screen_linkage_anim">Override linkage wallpaper anim</string>
     <string name="system_ui_lock_screen_linkage_anim_on">Screen on animation rate</string>
     <string name="system_ui_lock_screen_linkage_anim_off">Screen off animation rate</string>
     <string name="system_ui_navigation_title">Navigation</string>
@@ -1477,6 +1484,7 @@
     <string name="security_center_beauty_pc">Unlock Keep faces centered</string>
     <string name="security_center_disable_root_check">Disable root detection</string>
     <string name="security_center_install_intercept">Disable USB installation interception</string>
+    <string name="security_center_adb_install_verify">Disable network verify when open USB installation</string>
     <string name="security_center_remove_macro_black_list">Remove auto combo blacklist</string>
     <string name="security_center_disable_send_malicious_app_notification">Disable \"Malicious app found\" notifications</string>
     <string name="security_center_newbox_custom_enable">Enable custom</string>
@@ -1516,7 +1524,6 @@
     <string name="security_center_unlock_smart_charge_title_summary">Completed functions:\n- Battery protection -> Charging auto-disconnect\n- More battery features -> Low battery fast charging</string>
     <string name="security_center_super_wireless_charge">Unlock Quick wireless charging</string>
     <string name="security_center_blur_model">Sidebar blur model</string>
-    <string name="security_center_blur_model_super">Advanced textures</string>
     <string name="security_center_invert_color">Icon inverted</string>
     <string name="security_center_invert_color_summary">Invert the selected icon colors on some backgrounds for better visibility.\nThis function may have abnormal color inversions. Please enable it as appropriate.</string>
     <string name="security_center_blurradius">Sidebar blur value</string>

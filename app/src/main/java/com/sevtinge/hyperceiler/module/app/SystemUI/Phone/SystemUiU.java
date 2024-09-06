@@ -16,16 +16,16 @@
 
  * Copyright (C) 2023-2024 HyperCeiler Contributions
  */
-package com.sevtinge.hyperceiler.module.app;
+package com.sevtinge.hyperceiler.module.app.SystemUI.Phone;
+
 
 import com.sevtinge.hyperceiler.module.base.BaseModule;
 import com.sevtinge.hyperceiler.module.base.HookExpand;
-import com.sevtinge.hyperceiler.module.hook.remotecontroller.DisableAd;
 
-@HookExpand(pkg = "com.duokan.phone.remotecontroller", tarAndroid = 33)
-public class RemoteController extends BaseModule {
+@HookExpand(pkg = "com.android.systemui", tarAndroid = 34, maxAndroid = 34)
+public class SystemUiU extends BaseModule {
     @Override
     public void handleLoadPackage() {
-        initHook(new DisableAd(), mPrefsMap.getBoolean("remotecontroller_disable_ad"));
+        // initHook(Island.INSTANCE); // 灵动岛
     }
 }

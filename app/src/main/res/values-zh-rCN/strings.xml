@@ -78,12 +78,17 @@
     <string name="prefs_6">检查共享首选项</string>
     <string name="prefs_7">移除指定 Key</string>
 
+    <string name="success">成功</string>
+    <string name="failed">失败</string>
+
     <string name="development">开发者选项</string>
     <string name="development_ui">界面元素测试</string>
     <string name="development_debug_info">调试信息</string>
     <string name="development_prefs">共享首选项</string>
     <string name="development_cmd_r">使用 root 的模拟终端</string>
     <string name="development_delete_all_dexkit_cache">删除全部 DexKit 缓存</string>
+    <string name="development_close_log_alert_dialog">禁用 Logger Live 弹窗</string>
+    <string name="development_fix_lsposed_log">尝试修复 LSPosed Log 服务</string>
 
     <string name="settings_show_title">显示</string>
     <string name="settings_data_title">备份与恢复</string>
@@ -207,6 +212,7 @@
     <string name="floating_window">小窗</string>
     <string name="save_to_screen_title">规范保存位置</string>
     <string name="only_new_version_can_do">仅支持较新的版本</string>
+    <string name="use_hyper_blur">使用高级材质</string>
 
     <string name="system_ui_statusbar_indicator_default_title">常规</string>
     <string name="system_ui_statusbar_indicator_expand_title">扩展</string>
@@ -614,7 +620,9 @@
     <string name="system_ui_lock_screen_hide_smart_screen">隐藏负一屏</string>
     <string name="system_ui_lock_screen_current">当前电流</string>
     <string name="system_ui_lock_screen_show_second">时钟显示秒数</string>
-    <string name="system_ui_lock_screen_blur_button">相机和负一屏按钮背景模糊</string>
+    <string name="system_ui_lock_screen_blur_button">锁屏按钮背景模糊</string>
+    <string name="system_ui_lock_screen_blur_button_desc">启用后相机和负一屏按钮的背景带有模糊，可能存在功耗偏高的情况，仅支持默认主题</string>
+    <string name="system_ui_lock_screen_blur_button_radius">背景半径</string>
     <string name="system_ui_lock_screen_force_system_fonts">时钟强制使用系统字体</string>
     <string name="system_ui_lock_screen_double_lock">双击锁屏</string>
     <string name="system_ui_lock_screen_double_lock_desc">双击空白位置锁屏</string>
@@ -1509,6 +1517,7 @@
     <string name="security_center_beauty_pc">解锁人像居中</string>
     <string name="security_center_disable_root_check">禁用 Root 检测</string>
     <string name="security_center_install_intercept">禁用 USB 安装拦截</string>
+    <string name="security_center_adb_install_verify">绕过开启 USB 安装时的网络校验</string>
     <string name="security_center_remove_macro_black_list">移除自动连招黑名单</string>
     <string name="security_center_disable_send_malicious_app_notification">禁止发送 “发现恶意应用” 通知</string>
     <string name="security_center_newbox_custom_enable">启用自定义</string>
@@ -1548,7 +1557,6 @@
     <string name="security_center_unlock_smart_charge_title_summary">已补全功能：\n- 电池保护-导航断充保护\n- 更多电池功能-低电疾充</string>
     <string name="security_center_super_wireless_charge">解锁极速无线充电模式</string>
     <string name="security_center_blur_model">全局侧边栏背景自定义</string>
-    <string name="security_center_blur_model_super">高级材质</string>
     <string name="security_center_invert_color">图标反色</string>
     <string name="security_center_invert_color_summary">对某些背景下的图标选中颜色进行反色，以达到更好的可视效果\n该功能可能会有反色异常的情况，请酌情开启</string>
     <string name="security_center_blurradius">全局侧边栏背景模糊程度</string>
