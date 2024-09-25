@@ -48,6 +48,7 @@ public class OtherSettings extends SettingsPreferenceFragment implements Prefere
 
     Preference mCleanShareApps;
     Preference mCleanOpenApps;
+    Preference mCleanProcessTextApps;
     Preference mAutoStart;
     Preference mClipboardWhitelistApps;
     SwitchPreference mEntry;
@@ -75,6 +76,7 @@ public class OtherSettings extends SettingsPreferenceFragment implements Prefere
     public void initPrefs() {
         mCleanShareApps = findPreference("prefs_key_system_framework_clean_share_apps");
         mCleanOpenApps = findPreference("prefs_key_system_framework_clean_open_apps");
+        mCleanProcessTextApps = findPreference("prefs_key_system_framework_clean_process_text_apps");
         mAutoStart = findPreference("prefs_key_system_framework_auto_start_apps");
         mClipboardWhitelistApps = findPreference("prefs_key_system_framework_clipboard_whitelist_apps");
         mVerifyDisable = findPreference("prefs_key_system_framework_disable_verify_can_ve_disabled");
@@ -124,6 +126,14 @@ public class OtherSettings extends SettingsPreferenceFragment implements Prefere
             return true;
         });
 
+        mCleanProcessTextApps.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity(), SubPickerActivity.class);
+            intent.putExtra("mode", AppPicker.PROCESS_TEXT_MODE);
+            intent.putExtra("key", preference.getKey());
+            startActivity(intent);
+            return true;
+        });
+
         mClipboardWhitelistApps.setOnPreferenceClickListener(preference -> {
             Intent intent = new Intent(getActivity(), SubPickerActivity.class);
             intent.putExtra("mode", AppPicker.LAUNCHER_MODE);
@@ -156,20 +166,12 @@ public class OtherSettings extends SettingsPreferenceFragment implements Prefere
     public boolean onPreferenceChange(@NonNull Preference preference, Object o) {
         ExecutorService executorService = ThreadPoolManager.getInstance();
         switch (preference.getKey()) {
-            case "prefs_key_system_framework_guided_access" -> {
-                initApp(executorService, () -> {
-                    KillApp.killApps("com.miui.home", "com.android.systemui");
-                });
-            }
-            case "prefs_key_system_framework_guided_access_sc" -> {
-                initApp(executorService, () -> KillApp.killApps("com.miui.securitycenter"));
-            }
-            case "prefs_key_system_framework_guided_access_screen_int" -> {
-                initApp(executorService, () -> KillApp.killApps("com.android.systemui"));
-            }
-            case "prefs_key_system_framework_guided_access_status" -> {
-                initApp(executorService, () -> KillApp.killApps("com.miui.home","com.android.systemui"));
-            }
+            case "prefs_key_system_framework_guided_access" -> initApp(executorService, () -> {
+                KillApp.killApps("com.miui.home", "com.android.systemui");
+            });
+            case "prefs_key_system_framework_guided_access_sc" -> initApp(executorService, () -> KillApp.killApps("com.miui.securitycenter"));
+            case "prefs_key_system_framework_guided_access_screen_int" -> initApp(executorService, () -> KillApp.killApps("com.android.systemui"));
+            case "prefs_key_system_framework_guided_access_status" -> initApp(executorService, () -> KillApp.killApps("com.miui.home","com.android.systemui"));
         }
         return true;
     }

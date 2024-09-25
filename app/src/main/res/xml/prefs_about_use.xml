@@ -55,7 +55,7 @@
                 android:data="https://github.com/MinaMichita/AntiAntiDefraud" />
         </Preference>
         <Preference
-            android:summary="焕晨 HChen | GPL-3.0"
+            android:summary="焕晨HChen | GPL-3.0"
             android:title="AutoSEffSwitch">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -139,11 +139,11 @@
                 android:data="https://github.com/KyuubiRan/EzXHelper" />
         </Preference>
         <Preference
-            android:summary="焕晨HChen | GPL-3.0"
-            android:title="ForegroundPin">
+            android:summary="kooritea | No License"
+            android:title="fcmfix">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/HChenX/ForegroundPin" />
+                android:data="https://github.com/kooritea/fcmfix" />
         </Preference>
         <Preference
             android:summary="qqlittleice | GPL-3.0"
@@ -153,11 +153,25 @@
                 android:data="https://github.com/qqlittleice/FixMiuiMediaControlPanel" />
         </Preference>
         <Preference
+            android:summary="焕晨HChen | GPL-3.0"
+            android:title="ForegroundPin">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/HChenX/ForegroundPin" />
+        </Preference>
+        <Preference
             android:summary="xiaowine | No License"
             android:title="FuckNFC">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://github.com/xiaowine/FuckNFC" />
+        </Preference>
+        <Preference
+            android:summary="weixiansen574 | No License"
+            android:title="FuckUnknownSourcesRestrictions">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/weixiansen574/FuckUnknownSourcesRestrictions" />
         </Preference>
         <Preference
             android:summary="Android Open Source Project, Google Inc. | Apache-2.0"

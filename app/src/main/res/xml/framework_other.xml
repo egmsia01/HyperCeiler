@@ -130,6 +130,11 @@
     <PreferenceCategory android:title="@string/system_framework_core_title">
         <SwitchPreference
             android:defaultValue="false"
+            android:key="prefs_key_system_framework_disable_miui_watermark"
+            android:title="@string/system_framework_disable_miui_watermark" />
+
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="prefs_key_system_framework_other_speed_install"
             android:summary="@string/system_framework_other_speed_install_desc"
             android:title="@string/system_framework_other_speed_install" />
@@ -196,6 +201,11 @@
             android:key="prefs_key_system_framework_allow_disable_protected_package"
             android:title="@string/system_framework_allow_disable_protected_package" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="prefs_key_system_framework_bypass_unknown_sources_restrictions"
+            android:title="@string/system_framework_bypass_unknown_sources_restrictions" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/system_framework_shortcut_title">
@@ -220,6 +230,17 @@
             android:key="prefs_key_system_framework_clean_open_apps"
             android:summary="@string/system_framework_clean_open_apps_desc"
             android:title="@string/system_framework_clean_open_apps" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="prefs_key_system_framework_clean_process_text_menu"
+            android:title="@string/system_framework_clean_process_text_menu" />
+
+        <Preference
+            android:dependency="prefs_key_system_framework_clean_process_text_menu"
+            android:key="prefs_key_system_framework_clean_process_text_apps"
+            android:summary="@string/system_framework_clean_process_text_apps_desc"
+            android:title="@string/system_framework_clean_process_text_apps" />
 
     </PreferenceCategory>
 

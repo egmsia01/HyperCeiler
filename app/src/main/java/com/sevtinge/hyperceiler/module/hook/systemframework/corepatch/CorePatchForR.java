@@ -43,6 +43,7 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -90,6 +91,7 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
             XposedBridge.log("[HyperCeiler][D][android]" + TAG + ": UsePreSig=" + prefs.getBoolean("prefs_key_system_framework_core_patch_use_pre_signature", false));
             XposedBridge.log("[HyperCeiler][D][android]" + TAG + ": enhancedMode=" + prefs.getBoolean("prefs_key_system_framework_core_patch_enhanced_mode", false));
             XposedBridge.log("[HyperCeiler][D][android]" + TAG + " sharedUser=" + prefs.getBoolean("prefs_key_system_framework_core_patch_shared_user", false));
+            XposedBridge.log("[HyperCeiler][D][android]" + TAG + "disableVerificationAgent=" + prefs.getBoolean("prefs_key_system_framework_disable_verification_agent", true));
         }
 
         var pmService = findClassIfExists("com.android.server.pm.PackageManagerService",
@@ -208,11 +210,7 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
                             }
                         } catch (Throwable ignored) {
                         }
-                        if (lastSigs != null) {
-                            signingDetailsArgs[0] = lastSigs;
-                        } else {
-                            signingDetailsArgs[0] = new Signature[]{new Signature(SIGNATURE)};
-                        }
+                        signingDetailsArgs[0] = Objects.requireNonNullElseGet(lastSigs, () -> new Signature[]{new Signature(SIGNATURE)});
                         Object newInstance = findConstructorExact.newInstance(signingDetailsArgs);
 
                         // 修复 java.lang.ClassCastException: Cannot cast android.content.pm.PackageParser$SigningDetails to android.util.apk.ApkSignatureVerifier$SigningDetailsWithDigests
@@ -251,10 +249,11 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
         hookAllMethods(signingDetails, "checkCapability", new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) {
-                // Don't handle PERMISSION (grant SIGNATURE permissions to pkgs with this cert)
+                // Don't handle PERMISSION & AUTH
                 // Or applications will have all privileged permissions
                 // https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/content/pm/PackageParser.java;l=5947?q=CertCapabilities
-                if (((Integer) param.args[1] != 4) && prefs.getBoolean("prefs_key_system_framework_core_patch_digest_creak", true)) {
+                // https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/core/java/com/android/server/accounts/AccountManagerService.java;l=5867
+                if ((Integer) param.args[1] != 4 && (Integer) param.args[1] != 16 && prefs.getBoolean("prefs_key_system_framework_core_patch_digest_creak", true)) {
                     param.setResult(true);
                 }
             }
@@ -404,6 +403,8 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
             }
         );
 
+        hookAllMethods(getIsVerificationEnabledClass(loadPackageParam.classLoader), "isVerificationEnabled", new ReturnConstant(prefs, "prefs_key_system_framework_disable_verification_agent", false));
+
         if (DEBUG) initializeDebugHook(loadPackageParam);
     }
 
@@ -420,6 +421,10 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e.getCause());
         }
+    }
+
+    Class<?> getIsVerificationEnabledClass(ClassLoader classLoader) {
+        return XposedHelpers.findClass("com.android.server.pm.PackageManagerService", classLoader);
     }
 
     Class<?> getSigningDetails(ClassLoader classLoader) {

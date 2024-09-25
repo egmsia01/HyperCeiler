@@ -27,6 +27,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.sevtinge.hyperceiler.XposedInit;
 import com.sevtinge.hyperceiler.utils.color.ColorUtilsStatic;
 import com.sevtinge.hyperceiler.utils.devicesdk.DisplayUtils;
@@ -37,6 +39,8 @@ public class BlurUtils {
     private final Context mContext;
     private Object mViewRootImpl;
     private Drawable mBlurDrawable;
+
+    private boolean isEnable;
 
     private int mColor;
     private int mAlpha;
@@ -52,7 +56,7 @@ public class BlurUtils {
     public BlurUtils(View view, String key) {
         mContext = view.getContext();
         setKey(mContext, key);
-        setBlurView(view);
+        if (isEnable) setBlurView(view);
     }
 
     public void setBlurView(View view) {
@@ -94,12 +98,16 @@ public class BlurUtils {
     public void setKey(Context context, String key) {
         if (!TextUtils.isEmpty(key)) {
 
+            String mCustomBackgroundEnabledKey = key + "_custom_enable";
+
             String mBlurEnableKey = key + "_blur_enabled";
             String mBlurRadiusKey = key + "_blur_radius";
 
             String mColorKey = key + "_color";
             String mAlphaKey = key + "_color_alpha";
             String mCornerRadiusKey = key + "_corner_radius";
+
+            isEnable = XposedInit.mPrefsMap.getBoolean(mCustomBackgroundEnabledKey);
 
             isBlurEnable = XposedInit.mPrefsMap.getBoolean(mBlurEnableKey);
             mBlurRadius = XposedInit.mPrefsMap.getInt(mBlurRadiusKey, 60);
@@ -109,6 +117,8 @@ public class BlurUtils {
             mCornerRadius = DisplayUtils.dp2px(XposedInit.mPrefsMap.getInt(mCornerRadiusKey, 18));
 
         } else {
+            isEnable = false;
+
             isBlurEnable = false;
             mBlurRadius = 60;
 
@@ -122,14 +132,14 @@ public class BlurUtils {
     private void setOnAttachStateChangeListener(View view) {
         view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
-            public void onViewAttachedToWindow(View v) {
+            public void onViewAttachedToWindow(@NonNull View v) {
                 mViewRootImpl = XposedHelpers.callMethod(v, "getViewRootImpl");
                 mBlurDrawable = createBackgroundDrawable(mViewRootImpl, isBlurEnable, ColorUtilsStatic.colorToHexARGB(mColor), mCornerRadius, mBlurRadius);
                 v.setBackground(mBlurDrawable);
             }
 
             @Override
-            public void onViewDetachedFromWindow(View v) {
+            public void onViewDetachedFromWindow(@NonNull View v) {
                 v.setBackground(null);
             }
         });
@@ -196,11 +206,11 @@ public class BlurUtils {
     }
 
     public void setCornerRadius(Drawable drawable, int cornerRadius) {
-        XposedHelpers.callMethod(drawable, "setCornerRadius", new Object[]{cornerRadius});
+        XposedHelpers.callMethod(drawable, "setCornerRadius", cornerRadius);
     }
 
     public void setBlurRadius(Drawable drawable, int blurRadius) {
-        XposedHelpers.callMethod(drawable, "setBlurRadius", new Object[]{blurRadius});
+        XposedHelpers.callMethod(drawable, "setBlurRadius", blurRadius);
     }
 
 

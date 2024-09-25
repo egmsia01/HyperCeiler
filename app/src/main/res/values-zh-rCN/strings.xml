@@ -208,6 +208,10 @@
     <string name="enable">启用</string>
     <string name="disable">禁用</string>
     <string name="custom_enable">启用自定义</string>
+    <string name="customization">自定义</string>
+    <string name="model">认证型号</string>
+    <string name="device">设备代号</string>
+    <string name="manufacturer">厂商</string>
     <string name="search">搜索</string>
     <string name="floating_window">小窗</string>
     <string name="save_to_screen_title">规范保存位置</string>
@@ -454,6 +458,9 @@
     <string name="system_framework_clean_open_menu">清理打开方式菜单</string>
     <string name="system_framework_clean_open_apps">已选应用</string>
     <string name="system_framework_clean_open_apps_desc">选中的应用将不会出现在打开方式菜单内</string>
+    <string name="system_framework_clean_process_text_menu">清理文本上下文菜单</string>
+    <string name="system_framework_clean_process_text_apps">已选应用</string>
+    <string name="system_framework_clean_process_text_apps_desc">选中的应用将不会出现在文本上下文菜单内</string>
     <string name="system_other_flag_secure">允许截屏</string>
     <string name="system_other_flag_secure_desc">允许对任意应用进行截屏和录屏</string>
     <string name="system_other_delete_on_post_notification">移除上层显示通知</string>
@@ -484,6 +491,8 @@
     <string name="system_framework_allow_disable_protected_package">允许冻结受保护的应用</string>
     <string name="system_framework_other_disable_gesture_monitor">禁止监控手势</string>
     <string name="system_framework_other_disable_gesture_monitor_desc">可适当降低 CPU 负载，但会破坏部分屏幕操作类的快捷手势功能及手势输入相关功能</string>
+    <string name="system_framework_disable_miui_watermark">禁用全局水印</string>
+    <string name="system_framework_bypass_unknown_sources_restrictions">默认允许全部应用安装未知来源的应用</string>
 
     <!--核心破解-->
     <string name="system_framework_corepatch_title">包管理服务</string>
@@ -505,6 +514,8 @@
     <string name="system_framework_disable_low_api_check_desc">允许安装 TargetSDK 低于 23 的应用</string>
     <string name="system_framework_disable_persistent">禁用持久性检查</string>
     <string name="system_framework_disable_persistent_more">允许安装声明为持久性的应用</string>
+    <string name="system_framework_disable_verification_agent">禁用安装包验证代理</string>
+    <string name="system_framework_disable_verification_agent_desc">如 Play 商店的保护机制</string>
     <!--浏览器-->
     <string name="browser">浏览器</string>
     <string name="browser_debug_mode">解锁开发者选项</string>
@@ -573,6 +584,9 @@
     <!--日历-->
     <string name="calendar">日历</string>
     <string name="calendar_unlock_subscription">解锁订阅服务</string>
+    <!--小米社区-->
+    <string name="community">小米社区</string>
+    <string name="community_device_modify">机型伪装</string>
     <!--文件管理-->
     <string name="fileexplorer">文件管理</string>
     <string name="file_explorer_can_selectable">文件夹名称允许长按选择操作</string>
@@ -623,6 +637,7 @@
     <string name="system_ui_lock_screen_blur_button">锁屏按钮背景模糊</string>
     <string name="system_ui_lock_screen_blur_button_desc">启用后相机和负一屏按钮的背景带有模糊，可能存在功耗偏高的情况，仅支持默认主题</string>
     <string name="system_ui_lock_screen_blur_button_radius">背景半径</string>
+    <string name="system_ui_lock_screen_blur_button_bg_color">背景颜色</string>
     <string name="system_ui_lock_screen_force_system_fonts">时钟强制使用系统字体</string>
     <string name="system_ui_lock_screen_double_lock">双击锁屏</string>
     <string name="system_ui_lock_screen_double_lock_desc">双击空白位置锁屏</string>
@@ -1465,6 +1480,7 @@
     <string name="powerkeeper_do_not_kill_apps_desc">可能使耗电量增加</string>
     <string name="powerkeeper_prevent_recovery_of_battery_optimization_whitelist">禁止恢复电池优化白名单</string>
     <string name="powerkeeper_disable_get_display_ctrl_code">禁止获取显示控制码</string>
+    <string name="powerkeeper_gms_doze_fix">允许 Google Play 服务在任何时间联网</string>
     <!--屏幕录制-->
     <string name="screenrecorder">屏幕录制</string>
     <string name="screen_recorder_force_support_playback_capture">强制启用原生屏幕录制支持</string>
@@ -1740,7 +1756,8 @@
     <string name="various_mipad_input_need_finger_num_title">交换手势所需的手指数量</string>
     <string name="various_mipad_input_need_finger_num_desc">将三指截屏、三指长按区域截屏、三指横向分屏手势更改为四指触发，切换应用手势更改为三指触发</string>
 
-    <string name="custom_background_blur_enabled">高斯模糊</string>
+    <string name="custom_background">自定义弹窗背景</string>
+    <string name="custom_background_blur_enabled">背景模糊</string>
     <string name="custom_background_blur_radius">模糊半径</string>
     <string name="custom_background_color">颜色</string>
     <string name="custom_background_color_alpha">背景颜色透明度</string>
@@ -1759,8 +1776,8 @@
     <string name="various_dialog_margin_horizontal_desc">弹窗距屏幕两侧的距离</string>
     <string name="various_dialog_margin_bottom">弹窗底部边距</string>
     <string name="various_dialog_margin_bottom_desc">弹窗距屏幕底部的距离</string>
-    <string name="various_dialog_window_blur">窗口模糊</string>
-    <string name="various_dialog_window_blur_radius">窗口模糊半径</string>
+    <string name="various_dialog_window_blur">弹窗后景模糊</string>
+    <string name="various_dialog_window_blur_radius">弹窗后景模糊半径</string>
 
     <string name="location_data_title">数据库</string>
     <string name="various_location_simulation_1_title">任务 1</string>

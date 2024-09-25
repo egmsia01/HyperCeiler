@@ -29,7 +29,7 @@ import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getDeviceToke
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getFingerPrint;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getLanguage;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getLocale;
-import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getManufacture;
+import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getManufacturer;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getMarketName;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getModDevice;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DeviceSDKKt.getModelName;
@@ -39,10 +39,8 @@ import static com.sevtinge.hyperceiler.utils.devicesdk.MiDeviceAppUtilsKt.isInte
 import static com.sevtinge.hyperceiler.utils.devicesdk.MiDeviceAppUtilsKt.isPad;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getAndroidVersion;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getBuildDate;
-import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getBuilder;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getHyperOSVersion;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getMiuiVersion;
-import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getRomAuthor;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getSystemVersionIncremental;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getWhoAmI;
 import static com.sevtinge.hyperceiler.utils.log.LogManager.IS_LOGGER_ALIVE;
@@ -53,7 +51,6 @@ import com.sevtinge.hyperceiler.R;
 import com.sevtinge.hyperceiler.ui.MainActivityContextHelper;
 import com.sevtinge.hyperceiler.ui.fragment.base.SettingsPreferenceFragment;
 import com.sevtinge.hyperceiler.utils.api.ProjectApi;
-import com.sevtinge.hyperceiler.utils.shell.ShellInit;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -100,7 +97,7 @@ public class DevelopmentDebugInfoFragment extends SettingsPreferenceFragment {
             propertiesDevice.put("DeviceName", getDeviceName());
             propertiesDevice.put("Model", getModelName());
             propertiesDevice.put("Brand", getBrand());
-            propertiesDevice.put("Manufacture", getManufacture());
+            propertiesDevice.put("Manufacture", getManufacturer());
             propertiesDevice.put("Board", getBoard());
             propertiesDevice.put("Soc", getSoc());
             propertiesDevice.put("ModDevice", getModDevice());

@@ -31,8 +31,10 @@ import com.sevtinge.hyperceiler.module.hook.systemframework.AllowUntrustedTouchF
 import com.sevtinge.hyperceiler.module.hook.systemframework.AntiQues;
 import com.sevtinge.hyperceiler.module.hook.systemframework.AppLinkVerify;
 import com.sevtinge.hyperceiler.module.hook.systemframework.BackgroundBlur;
+import com.sevtinge.hyperceiler.module.hook.systemframework.BypassUnknownSourcesRestrictions;
 import com.sevtinge.hyperceiler.module.hook.systemframework.CleanOpenMenu;
 import com.sevtinge.hyperceiler.module.hook.systemframework.CleanShareMenu;
+import com.sevtinge.hyperceiler.module.hook.systemframework.CleanProcessTextMenu;
 import com.sevtinge.hyperceiler.module.hook.systemframework.ClipboardWhitelist;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DeleteOnPostNotification;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisableCleaner;
@@ -40,6 +42,7 @@ import com.sevtinge.hyperceiler.module.hook.systemframework.DisableFreeformBlack
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisableGestureMonitor;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisableLowApiCheckForU;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisableMiuiLite;
+import com.sevtinge.hyperceiler.module.hook.systemframework.DisableMiuiWatermark;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisablePersistent;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisablePinVerifyPer72h;
 import com.sevtinge.hyperceiler.module.hook.systemframework.DisableVerifyCanBeDisabled;
@@ -91,7 +94,8 @@ public class SystemFrameworkT extends BaseModule {
 
     @Override
     public void handleLoadPackage() {
-        initHook(new AntiQues());
+        initHook(new DisableMiuiWatermark(), mPrefsMap.getBoolean("system_framework_disable_miui_watermark"));
+        initHook(new AntiQues(), mPrefsMap.getBoolean("system_settings_anti_ques"));
         // 小窗
         initHook(new AllowAutoStart(), mPrefsMap.getBoolean("system_framework_auto_start_apps_enable"));
         initHook(new FreeFormCount(), mPrefsMap.getBoolean("system_framework_freeform_count"));
@@ -117,6 +121,7 @@ public class SystemFrameworkT extends BaseModule {
         initHook(new ScreenRotation(), mPrefsMap.getBoolean("system_framework_screen_all_rotations"));
         initHook(new CleanShareMenu(), mPrefsMap.getBoolean("system_framework_clean_share_menu"));
         initHook(new CleanOpenMenu(), mPrefsMap.getBoolean("system_framework_clean_open_menu"));
+        initHook(new CleanProcessTextMenu(), mPrefsMap.getBoolean("system_framework_clean_process_text_menu"));
         initHook(new AllowUntrustedTouch(), mPrefsMap.getBoolean("system_framework_allow_untrusted_touch"));
         if (isMoreAndroidVersion(34))
             initHook(new AllowUntrustedTouchForU(), mPrefsMap.getBoolean("system_framework_allow_untrusted_touch"));
@@ -132,6 +137,8 @@ public class SystemFrameworkT extends BaseModule {
         initHook(new AllowDisableProtectedPackage(), mPrefsMap.getBoolean("system_framework_allow_disable_protected_package"));
         // 允许应用后台读取剪切板
         initHook(new ClipboardWhitelist(), mPrefsMap.getBoolean("system_framework_clipboard_whitelist"));
+
+        initHook(new BypassUnknownSourcesRestrictions(), mPrefsMap.getBoolean("system_framework_bypass_unknown_sources_restrictions"));
 
         // 显示
         initHook(new BackgroundBlur(), mPrefsMap.getBoolean("system_framework_background_blur_supported"));

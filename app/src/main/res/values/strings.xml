@@ -131,6 +131,7 @@
     <string name="settings_app_tr_tr" translatable="false">Türkçe</string>
     <string name="settings_app_vi_vn" translatable="false">Tiếng Việt</string>
     <string name="settings_app_it_it" translatable="false">Italiano</string>
+    <string name="settings_app_zh_me" translatable="false">梗体中文</string>
     <string name="settings_app_language">Language</string>
     <string name="settings_icon_miui_14">Rounded rectangle style</string>
     <string name="settings_icon_miui_13">Background cutout style</string>
@@ -233,6 +234,10 @@
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
     <string name="custom_enable">Custom enable</string>
+    <string name="customization">Customization</string>
+    <string name="model">Model</string>
+    <string name="device">Device</string>
+    <string name="manufacturer">Manufacture</string>
     <string name="search">Search</string>
     <string name="floating_window">Freeform</string>
     <string name="save_to_screen_title">Specification save location</string>
@@ -445,6 +450,9 @@
     <string name="system_framework_clean_open_menu">Clean up open with menu</string>
     <string name="system_framework_clean_open_apps">Selected apps</string>
     <string name="system_framework_clean_open_apps_desc">The selected app won\'t appear in the open with menu</string>
+    <string name="system_framework_clean_process_text_menu">Clean up text context menu</string>
+    <string name="system_framework_clean_process_text_apps">Selected apps</string>
+    <string name="system_framework_clean_process_text_apps_desc">The selected app won\'t appear in the text context menu</string>
     <string name="system_other_flag_secure">Allow screenshot</string>
     <string name="system_other_flag_secure_desc">Allows screenshots and screen recordings of any app</string>
     <string name="system_other_delete_on_post_notification">Remove the upper display notification</string>
@@ -475,6 +483,8 @@
     <string name="system_framework_disable_link_turbo_toast">Hide hint of mobile network used for acceleration</string>
     <string name="system_framework_allow_third_theme">Allow to use third-party themes</string>
     <string name="system_framework_allow_disable_protected_package">Allows to disable protected apps</string>
+    <string name="system_framework_disable_miui_watermark">Disable global watermark</string>
+    <string name="system_framework_bypass_unknown_sources_restrictions">Bypass unknown sources restrictions</string>
     <!--Package Manager Service-->
     <string name="system_framework_corepatch_title">Package Manager Service</string>
     <string name="system_framework_core_patch_downgr">Allow downgrade</string>
@@ -495,6 +505,8 @@
     <string name="system_framework_disable_low_api_check_desc">Apps with APIs lower than 23 are allowed</string>
     <string name="system_framework_disable_persistent">Disable persistent checks</string>
     <string name="system_framework_disable_persistent_more">Allows you to update persistent apps directly, such as updating the system interface directly.</string>
+    <string name="system_framework_disable_verification_agent">Disable Package Verification Agent</string>
+    <string name="system_framework_disable_verification_agent_desc">e.g. Google Play Protection</string>
     <!--Browser-->
     <string name="browser">Browser</string>
     <string name="browser_debug_mode">Unlock developer options</string>
@@ -563,6 +575,9 @@
     <!--Calendar-->
     <string name="calendar">Calendar</string>
     <string name="calendar_unlock_subscription">Unlock Subscription</string>
+    <!--Community-->
+    <string name="community">Xiaomi Community</string>
+    <string name="community_device_modify">Model guise</string>
     <!--File Manager-->
     <string name="fileexplorer">File Manager</string>
     <string name="file_explorer_can_selectable">File Manager can be selectable</string>
@@ -613,6 +628,7 @@
     <string name="system_ui_lock_screen_blur_button">Blur Lock screen buttons</string>
     <string name="system_ui_lock_screen_blur_button_desc">After enabling, the background of the camera and negative screen button on the Lock screen is blurred, which may cause high power consumption.\nSupport default theme only.</string>
     <string name="system_ui_lock_screen_blur_button_radius">Background radius</string>
+    <string name="system_ui_lock_screen_blur_button_bg_color">Background color</string>
     <string name="system_ui_lock_screen_force_system_fonts">Force clock to use system fonts</string>
     <string name="system_ui_lock_screen_double_lock">Double-tap the Lock screen</string>
     <string name="system_ui_lock_screen_double_lock_desc">Double-tap an empty location to lock the screen</string>
@@ -1432,6 +1448,7 @@
     <string name="powerkeeper_do_not_kill_apps_desc">May increase power consumption</string>
     <string name="powerkeeper_prevent_recovery_of_battery_optimization_whitelist">Prevent recovery of battery optimization whitelist</string>
     <string name="powerkeeper_disable_get_display_ctrl_code">Disable to get display control code</string>
+    <string name="powerkeeper_gms_doze_fix">Allow GMS to connect to network at any time</string>
     <!--Screen Recorder-->
     <string name="screenrecorder">Screen Recorder</string>
     <string name="screen_recorder_force_support_playback_capture">Force enable AOSP screen recording support</string>
@@ -1690,6 +1707,7 @@
     <string name="various_mipad_input_ingore_gesture_desc">Ignore the long press gesture on the stylus buttons</string>
     <string name="various_mipad_input_need_finger_num_title">Swap the number of fingers required for gestures</string>
     <string name="various_mipad_input_need_finger_num_desc">Change screenshot gesture, partial screenshot gesture, and horizontal split screen gesture to be triggered by four fingers, and switch apps gesture to be triggered by three fingers.</string>
+    <string name="custom_background">Custom background</string>
     <string name="custom_background_blur_enabled">Background blur</string>
     <string name="custom_background_blur_radius">Blur radius</string>
     <string name="custom_background_color">Background color</string>
