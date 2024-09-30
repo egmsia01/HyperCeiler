@@ -58,7 +58,12 @@
     <string name="help_cant_see_apps_disable">被禁用或隐藏的应用：\n</string>
     <string name="help_cant_see_apps_desc_no_hidden">为了保持首页的简洁和易用性，我们对以下类型的应用功能入口进行了隐藏：\n\n - 当前应用被禁用或隐藏的\n - 设备上不存在当前应用的\n - 当前系统或应用版本不适合使用功能的\n\n请根据以上内容排查后，重启 HyperCeiler 再试。若仍旧找不到应用功能入口，那可能是一个错误，请及时且有效的向我们反馈。</string>
     <string name="help_cant_see_apps_switch">在主页隐藏此帮助</string>
-    <string name="help_cant_see_apps_switch_desc">您仍可以在 \"设置-主页入口设置\" 找到此帮助，重启模块生效</string>
+    <string name="help_cant_see_apps_switch_desc">您仍可以在 \"关于-帮助\" 找到此帮助，重启模块生效</string>
+    <string name="help_support_version_title">当前应用版本适配系统情况</string>
+    <string name="help_support_version_desc_1">当前应用版本已完全适配下列系统：</string>
+    <string name="help_support_version_desc_2">当前应用版本仅部分适配下列系统：</string>
+    <string name="help_support_version_desc_3">当前使用的系统版本已完全适配。</string>
+    <string name="help_support_version_desc_4">当前使用的系统版本未 (完全) 适配。</string>
 
     <string name="location_add">添加</string>
     <string name="location_delete">删除</string>
@@ -516,6 +521,8 @@
     <string name="system_framework_disable_persistent_more">允许安装声明为持久性的应用</string>
     <string name="system_framework_disable_verification_agent">禁用安装包验证代理</string>
     <string name="system_framework_disable_verification_agent_desc">如 Play 商店的保护机制</string>
+    <string name="system_framework_use_android_package_installer">使用原生安装器</string>
+    <string name="system_framework_use_android_package_installer_desc">恢复被破坏的 PackageInstaller API</string>
     <!--浏览器-->
     <string name="browser">浏览器</string>
     <string name="browser_debug_mode">解锁开发者选项</string>
@@ -614,6 +621,10 @@
     <string name="downloads">下载管理程序</string>
     <string name="various_fuck_xlDownload">阻止创建 .xlDownload 文件夹</string>
     <string name="various_fuck_xlDownload_desc">防止下载管理程序在内部存储的根目录上生成 .xlDownload 文件夹</string>
+    <!--下载管理-->
+    <string name="downloads_ui">下载管理</string>
+    <string name="downloads_ui_always_show_link">总是显示完整下载链接</string>
+    <string name="downloads_ui_always_show_link_desc">同时修复部分下载任务无法复制的问题</string>
     <!--系统界面-->
     <string name="system_ui">系统界面</string>
     <string name="system_ui_lockscreen_title">锁屏</string>
@@ -1435,6 +1446,7 @@
     <string name="mishare">小米互传</string>
     <string name="mishare_disable_mishare_auto_off">禁用自动关闭小米互传</string>
     <string name="mishare_unlock_turbo_mode">解锁极速传输模式</string>
+    <string name="mishare_hook_switch_mode_all">所有人</string>
     <!--壁纸-->
     <string name="miwallpaper">壁纸</string>
     <string name="miwallpaper_unlock_super_wallpaper">解锁超级壁纸</string>
@@ -1890,6 +1902,7 @@
     <string name="tip_default">Tip: 这里是默认 tip ~ 如果你能看见我，就说明 HyperCeiler 出现了问题，请及时且有效的反馈给开发者。</string>
 
     <string name="headtip_warn_not_offical_rom">您正在使用的 ROM 来源可能并不是 Xiaomi 官方，部分功能可能会失效，详情请咨询您正在使用 ROM 的提供者。</string>
+    <string name="headtip_warn_unsupport_sysver">当前设备运行的系统版本未 (完全) 适配，HyperCeiler 功能可能存在异常。</string>
     <string name="headtip_warn_sign_verification_failed">签名校验失败，您当前使用的版本可能并非来自于 Re.chronoRain 的官方版本，可能包含恶意代码，请注意使用安全。</string>
     <string name="headtip_tip_long_press_to_copy">您可以长按或双击后选择文本进行操作，或者复制并反馈给开发者。</string>
     <string name="happy_birthday_hyperceiler">今天是 HyperCeiler 的生日！\n感谢与您岁月相伴之恩，愿来年再续前缘，共赴风雨，携手并进！</string>

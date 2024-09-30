@@ -1,34 +1,37 @@
 /*
  * This file is part of HyperCeiler.
-
+ *
  * HyperCeiler is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License.
-
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
-
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+ *
  * Copyright (C) 2023-2024 HyperCeiler Contributions
  */
-package com.sevtinge.hyperceiler.ui.fragment;
+package com.sevtinge.hyperceiler.ui.fragment.base;
 
 import static com.sevtinge.hyperceiler.utils.devicesdk.DisplayUtils.dp2px;
 import static com.sevtinge.hyperceiler.utils.devicesdk.DisplayUtils.sp2px;
 import static com.sevtinge.hyperceiler.utils.devicesdk.MiDeviceAppUtilsKt.isPad;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getBaseOs;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.getRomAuthor;
+import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.isFullSupport;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.isHyperOSVersion;
 import static com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt.isMoreHyperOSVersion;
 import static com.sevtinge.hyperceiler.utils.log.LogManager.IS_LOGGER_ALIVE;
 
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -47,8 +50,7 @@ import com.sevtinge.hyperceiler.R;
 import com.sevtinge.hyperceiler.prefs.PreferenceHeader;
 import com.sevtinge.hyperceiler.prefs.TipsPreference;
 import com.sevtinge.hyperceiler.ui.MainActivityContextHelper;
-import com.sevtinge.hyperceiler.ui.fragment.base.SettingsPreferenceFragment;
-import com.sevtinge.hyperceiler.ui.fragment.helper.HomepageEntrance;
+import com.sevtinge.hyperceiler.ui.fragment.base.helper.HomepageEntrance;
 import com.sevtinge.hyperceiler.utils.ThreadPoolManager;
 import com.sevtinge.hyperceiler.utils.devicesdk.SystemSDKKt;
 import com.sevtinge.hyperceiler.utils.log.AndroidLogUtils;
@@ -173,15 +175,50 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
             mGuardProvider.setTitle(R.string.guard_provider);
         }
 
+        setPreferenceIcons();
+
         mainActivityContextHelper = new MainActivityContextHelper(requireContext());
 
         isBirthday();
         isFuckCoolapkSDay();
         isOfficialRom();
         isLoggerAlive();
-        if (!getIsOfficialRom()) isSignPass();
+        if (!getIsOfficialRom()) if (isFullSupport()) isSignPass(); else isFullSupportSysVer();
 
         mTips = findPreference("prefs_key_tips");
+    }
+
+    private void setPreferenceIcons() {
+        Resources resources = getResources();
+        try (XmlResourceParser xml = resources.getXml(R.xml.prefs_main)) {
+            int event = xml.getEventType();
+            while (event != XmlPullParser.END_DOCUMENT) {
+                if (event == XmlPullParser.START_TAG && xml.getName().equals("com.sevtinge.hyperceiler.prefs.PreferenceHeader")) {
+                    String key = xml.getAttributeValue(ANDROID_NS, "key");
+                    String summary = xml.getAttributeValue(ANDROID_NS, "summary");
+                    if (key != null && summary != null) {
+                        Drawable icon = getPackageIcon(summary); // 替换为获取图标的方法
+                        PreferenceHeader preferenceHeader = findPreference(key);
+                        if (preferenceHeader != null) {
+                            preferenceHeader.setIcon(icon);
+                        }
+                    }
+                }
+                event = xml.next();
+            }
+        } catch (XmlPullParserException | IOException e) {
+            AndroidLogUtils.logE(TAG, "An error occurred when reading the XML:", e);
+        }
+    }
+
+
+    private Drawable getPackageIcon(String packageName) {
+        try {
+            return requireContext().getPackageManager().getApplicationIcon(packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void isBirthday() {
@@ -202,6 +239,11 @@ public class MainFragment extends SettingsPreferenceFragment implements Homepage
     public void isOfficialRom() {
         mHeadtipWarn.setTitle(R.string.headtip_warn_not_offical_rom);
         mHeadtipWarn.setVisible(getIsOfficialRom());
+    }
+
+    public void isFullSupportSysVer() {
+        mHeadtipWarn.setTitle(R.string.headtip_warn_unsupport_sysver);
+        mHeadtipWarn.setVisible(isFullSupport());
     }
 
     public void isLoggerAlive() {

@@ -505,8 +505,10 @@
     <string name="system_framework_disable_low_api_check_desc">Apps with APIs lower than 23 are allowed</string>
     <string name="system_framework_disable_persistent">Disable persistent checks</string>
     <string name="system_framework_disable_persistent_more">Allows you to update persistent apps directly, such as updating the system interface directly.</string>
-    <string name="system_framework_disable_verification_agent">Disable Package Verification Agent</string>
+    <string name="system_framework_disable_verification_agent">Disable package verification agent</string>
     <string name="system_framework_disable_verification_agent_desc">e.g. Google Play Protection</string>
+    <string name="system_framework_use_android_package_installer">Use Android package installer</string>
+    <string name="system_framework_use_android_package_installer_desc">Restore the broken PackageInstaller API</string>
     <!--Browser-->
     <string name="browser">Browser</string>
     <string name="browser_debug_mode">Unlock developer options</string>
@@ -605,6 +607,10 @@
     <string name="downloads">Downloads</string>
     <string name="various_fuck_xlDownload">Block creation of .xlDownload folder</string>
     <string name="various_fuck_xlDownload_desc">Prevent Downloads from creating the .xlDownload folder in the root of internal storage</string>
+    <!--Download UI-->
+    <string name="downloads_ui">Downloads UI</string>
+    <string name="downloads_ui_always_show_link">Always show full download link</string>
+    <string name="downloads_ui_always_show_link_desc">Also fix some download tasks cannot be copied</string>
     <!--System UI-->
     <string name="system_ui">System UI</string>
     <string name="system_ui_lockscreen_title">Lock screen</string>
@@ -1403,6 +1409,7 @@
     <string name="mishare">Xiaomi Share</string>
     <string name="mishare_disable_mishare_auto_off">Disable automatic closing of Xiaomi Share</string>
     <string name="mishare_unlock_turbo_mode">Unlock Turbo transfer</string>
+    <string name="mishare_hook_switch_mode_all">Everyone</string>
     <!--Wallpaper-->
     <string name="miwallpaper">Wallpaper</string>
     <string name="miwallpaper_unlock_super_wallpaper">Unlock Super wallpaper</string>
@@ -1801,8 +1808,14 @@
     <string name="help_cant_see_apps_disable">Disabled or hidden apps:\n</string>
     <string name="help_cant_see_apps_desc_no_hidden">To maintain the simplicity and usability of the homepage, we have hidden access to the following types of app features:\n\n - Those currently disabled or hidden\n - Those not found in your device\n - Those incompatible with the current version of the system or the app\n\nPlease troubleshoot based on the above information, restart HyperCeiler, and try again. If you still can\'t find the app features, it may be a bug. Please provide timely and effective feedback to us.\n\nThere are currently no hidden features!</string>
     <string name="help_cant_see_apps_switch">Hide this help in homepage</string>
-    <string name="help_cant_see_apps_switch_desc">You can still find this page in \"Settings > Set up the homepage entry\". Reboot app to apply.</string>
+    <string name="help_cant_see_apps_switch_desc">You can still find this page in \"About > Help\". Reboot app to apply.</string>
+    <string name="help_support_version_title">Current app version support system version list</string>
+    <string name="help_support_version_desc_1">The current app version is fully adapted to the following system versions:</string>
+    <string name="help_support_version_desc_2">The following system versions are adapted to the current app version:</string>
+    <string name="help_support_version_desc_3">The current system version is fully adapted.</string>
+    <string name="help_support_version_desc_4">The current system version isn\'t (fully) adapted.</string>
     <string name="headtip_warn_not_offical_rom">The source of the ROM you are using may not be an official Xiaomi ROM, and some features may not work. Please contact your supplier for more details.</string>
+    <string name="headtip_warn_unsupport_sysver">The current device is running on a system version that isn\'t (fully) adapted, which may result in anomalies in the HyperCeiler functionality.</string>
     <string name="headtip_warn_sign_verification_failed">The signature verification failed, and the current version you are using may not be from the official version of Re.chronoRain, and may contain malicious code.</string>
     <string name="headtip_tip_long_press_to_copy">You can select text after long or double press, or copy it and send it back to the developer.</string>
     <string name="headtip_tip_fuck_coolapk">Today in history: Sevtinge delivered an important speech on July 14, 2022.</string>
